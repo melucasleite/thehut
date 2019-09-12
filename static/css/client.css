@@ -1,0 +1,8 @@
+.client-logo {
+    max-height: 50px;
+}
+
+.sidebar-nav > ul > li.active > a, .sidebar-nav > ul > li.active:hover > a {
+    color: #ffffff !important;
+    background: #263238 !important;
+}

@@ -1,0 +1,462 @@
+{% extends "base.html" %} {% block content %}
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">Students</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Students</li>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <!-- Column -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex no-block">
+          <h4 class="card-title">Search</h4>
+          <div class="ml-auto">
+            <select class="custom-select"> </select>
+          </div>
+        </div>
+        <select id="select2" style="width: 100%"> </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!-- Column -->
+  <div class="col-lg-3 col-xlg-3 col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <img
+            src="/static/assets/images/users/1.jpg"
+            class="img-circle"
+            width="150"
+          />
+          <h4 class="card-title m-t-10">Lucas Leite</h4>
+          <h6 class="card-subtitle">3 Classes / week</h6>
+          <h6 class="card-subtitle">14 Weeks program</h6>
+          <h6 class="card-subtitle">Started at April, 5th</h6>
+        </div>
+      </div>
+      <div>
+        <hr />
+      </div>
+      <div class="card-body">
+        <h4 class="font-medium">Skill Set</h4>
+        <hr />
+        <div>
+          <h5 class="mt-2">Speaking <span class="pull-right">80%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:80%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h5 class="m-t-30">Grammar <span class="pull-right">90%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              aria-valuenow="90"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:90%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h5 class="m-t-30">Vocabulary <span class="pull-right">50%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-danger"
+              role="progressbar"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:50%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h5 class="m-t-30">Listening <span class="pull-right">70%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              aria-valuenow="70"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:70%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="m-t-30">Reading <span class="pull-right">70%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              aria-valuenow="70"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:70%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="m-t-30">Writing <span class="pull-right">70%</span></h5>
+          <div class="progress">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              aria-valuenow="70"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:70%; height:6px;"
+            >
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Column -->
+  <!-- Column -->
+  <div class="col-lg-9 col-xlg-9 col-md-7">
+    <div class="card">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs profile-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#home" role="tab"
+            >Lectures</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="tab"
+            href="#payment-history"
+            role="tab"
+            >Payment History</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-toggle="tab"
+            href="#lecture-history"
+            role="tab"
+            >Lecture History</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            data-toggle="tab"
+            href="#settings"
+            role="tab"
+            >Profile</a
+          >
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane" id="home" role="tabpanel">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-4 mb-3">
+                <p>Lecture #1</p>
+                <select class="form-control select2">
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                  <option value="">Friday 9:30AM - (5/10)</option>
+                  <option value="">Wednessday 9:30AM - (5/10)</option>
+                  <option value="">Thursday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                </select>
+              </div>
+              <div class="col-4 mb-3">
+                <p>Lecture #2</p>
+                <select class="form-control select2">
+                  <option value="">Thursday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                </select>
+              </div>
+              <div class="col-4 mb-3">
+                <p>Lecture #3</p>
+                <select class="form-control select2">
+                  <option value="">Wednessday 9:30AM - (5/10)</option>
+                  <option value="">Thursday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                </select>
+              </div>
+              <div class="col-4 mb-3">
+                <p>Lecture #4</p>
+
+                <select class="form-control select2">
+                  <option value="">Friday 9:30AM - (5/10)</option>
+                  <option value="">Wednessday 9:30AM - (5/10)</option>
+                  <option value="">Thursday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                </select>
+              </div>
+              <div class="col-4 mb-3">
+                <p>Lecture #5</p>
+                <select class="form-control select2">
+                  <option selected>Unassigned</option>
+                  <option value="">Saturday 9:30AM - (5/10)</option>
+                  <option value="">Friday 9:30AM - (5/10)</option>
+                  <option value="">Wednessday 9:30AM - (5/10)</option>
+                  <option value="">Thursday 9:30AM - (5/10)</option>
+                  <option value="">Monday 9:30AM - (5/10)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <button class="btn btn-info">Update</button>
+            </div>
+          </div>
+        </div>
+        <!--second tab-->
+        <div class="tab-pane" id="payment-history" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive m-t-20">
+                    <table
+                      class="table stylish-table table-bordered table-striped"
+                    >
+                      <thead>
+                        <td>Due Date</td>
+                        <td>Payment Date</td>
+                        <td>Amount</td>
+                        <td>Payment Method</td>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>05/04/2019</td>
+                          <td>21/04/2019</td>
+                          <td>R$ 120</td>
+                          <td>Credit Card</td>
+                        </tr>
+                        <tr>
+                          <td>05/04/2019</td>
+                          <td>21/04/2019</td>
+                          <td>R$ 120</td>
+                          <td>Credit Card</td>
+                        </tr>
+                        <tr>
+                          <td>05/04/2019</td>
+                          <td>21/04/2019</td>
+                          <td>R$ 120</td>
+                          <td>Credit Card</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="2">Total</td>
+                          <td colspan="2">R$ 760</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                    <div class="form-group">
+                      <button class="btn btn-info">Add Payment</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--second tab-->
+        <div class="tab-pane" id="lecture-history" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive m-t-20">
+                    <table
+                      class="table stylish-table table-bordered table-striped"
+                    >
+                      <thead>
+                        <td>Date</td>
+                        <td>Lecture</td>
+                        <td>Presence</td>
+                        <td>Skillset</td>
+                        <td>To Improve</td>
+                        <td>Strenghts</td>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>20/05/2019</td>
+                          <td>Advanced #1 - Monday 5AM</td>
+                          <td>Yes</td>
+                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
+                          <td>Vocabulary</td>
+                          <td>Confidence</td>
+                        </tr>
+                        <tr>
+                          <td>20/05/2019</td>
+                          <td>Advanced #1 - Monday 5AM</td>
+                          <td>Yes</td>
+                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
+                          <td>Vocabulary</td>
+                          <td>Confidence</td>
+                        </tr>
+                        <tr>
+                          <td>20/05/2019</td>
+                          <td>Advanced #1 - Monday 5AM</td>
+                          <td>Yes</td>
+                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
+                          <td>Vocabulary</td>
+                          <td>Confidence</td>
+                        </tr>
+                        <tr>
+                          <td>20/05/2019</td>
+                          <td>Advanced #1 - Monday 5AM</td>
+                          <td>Yes</td>
+                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
+                          <td>Vocabulary</td>
+                          <td>Confidence</td>
+                        </tr>
+                        <tr>
+                          <td>20/05/2019</td>
+                          <td>Advanced #1 - Monday 5AM</td>
+                          <td>Yes</td>
+                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
+                          <td>Vocabulary</td>
+                          <td>Confidence</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-info">Add Lecture History</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane active" id="settings" role="tabpanel">
+          <div class="card-body">
+            <form class="form-horizontal form-material">
+              <div class="form-group">
+                <label class="col-md-12">Name</label>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    placeholder="Johnathan Doe"
+                    class="form-control form-control-line"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="example-email" class="col-md-12">Email</label>
+                <div class="col-md-12">
+                  <input
+                    type="email"
+                    placeholder="johnathan@admin.com"
+                    class="form-control form-control-line"
+                    name="example-email"
+                    id="example-email"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Cellphone</label>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    placeholder="(71) 99126-2602"
+                    class="form-control form-control-line"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Classes per week</label>
+                <div class="col-md-12">
+                  <input
+                    type="number"
+                    placeholder="3"
+                    class="form-control form-control-line"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Monthly Payment</label>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    placeholder="R$ 150"
+                    class="form-control form-control-line"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-12">Message</label>
+                <div class="col-md-12">
+                  <textarea
+                    rows="5"
+                    class="form-control form-control-line"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <button class="btn btn-info">Update Profile</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Column -->
+</div>
+{% endblock %} {% block scripts %}
+<style>
+  .select2 {
+    width: 100% !important;
+  }
+</style>
+<script>
+  $(function() {
+    $(".select2").select2();
+    $("#select2").select2();
+    $("#select2")
+      .append(new Option("Lucas Leite (me@lucasleite.us)", 0, false, false))
+      .append(new Option("Uriel Habes (me@lucasleite.us)", 0, false, false))
+      .trigger("change");
+  });
+</script>
+{% endblock %}
