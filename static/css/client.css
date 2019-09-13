@@ -13,6 +13,11 @@
   padding: 9px;
 }
 
+.label-md {
+  font-size: 14px;
+  padding: 7px;
+}
+
 .clockpicker-popover {
   z-index: 999999;
 }
