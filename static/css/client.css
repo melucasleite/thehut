@@ -45,3 +45,7 @@ html body .text-primary {
   /* Microsoft Edge */
   color: #444e57;
 }
+
+.select2 {
+  width: 100% !important;
+}
