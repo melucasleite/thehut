@@ -124,9 +124,9 @@
               <td>Payment</td>
             </thead>
             <tbody>
-              <tr>
+              <tr class="student">
                 <td style="width:50px;">
-                  <span class="round">LL</span>
+                  <span class="round bg-inverse">LL</span>
                 </td>
                 <td>
                   <h6>Lucas Leite</h6>
@@ -140,9 +140,9 @@
                   <span class="label label-danger">Pending</span>
                 </td>
               </tr>
-              <tr>
+              <tr class="student">
                 <td style="width:50px;">
-                  <span class="round">MA</span>
+                  <span class="round bg-inverse">MA</span>
                 </td>
                 <td>
                   <h6>Marcos Araujo</h6>
@@ -156,9 +156,9 @@
                   <span class="label label-danger">Pending</span>
                 </td>
               </tr>
-              <tr>
+              <tr class="student">
                 <td style="width:50px;">
-                  <span class="round">PO</span>
+                  <span class="round bg-inverse">PO</span>
                 </td>
                 <td>
                   <h6>Paulo Octavio</h6>
@@ -172,7 +172,7 @@
                   <span class="label label-danger">Pending</span>
                 </td>
               </tr>
-              <tr>
+              <tr class="student">
                 <td>
                   <span class="round"
                     ><img
@@ -193,7 +193,7 @@
                   <span class="label label-danger">Pending</span>
                 </td>
               </tr>
-              <tr>
+              <tr class="student-paid">
                 <td>
                   <span class="round"
                     ><img
@@ -221,4 +221,135 @@
     </div>
   </div>
 </div>
+{% endblock %} {% block modals %}
+<div id="modalPay" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Payment</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <h5>Lucas Leite</h5>
+            <h6 class="text-muted">
+              <i class="fa fa-phone"></i> 71 99126-2602
+            </h6>
+            <h6 class="text-muted">
+              <i class="fa fa-envelope"></i> me@lucasleite.us
+            </h6>
+          </div>
+          <div class="col-lg-6">
+            <h6>Started at: <span class="text-muted">April, 5th</span></h6>
+            <h6>Monthly Payment: <span class="text-muted">R$ 760</span></h6>
+            <h6>Classes per Week: <span class="text-muted">5</span></h6>
+            <h6>Payment Date: <span class="text-muted">12</span></h6>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <!-- Amount Paid -->
+        <div class="form-group has-danger">
+          <label for="exampleInputuname">Amount Paid</label>
+          <input
+            value="0"
+            type="number"
+            class="form-control"
+            id="exampleInputuname"
+          />
+          <small class="form-control-feedback">
+            Mandatory field.
+          </small>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-group has-danger">
+          <label for="exampleInputuname">Payment Method</label>
+          <select class="form-control" name="" id="">
+            <option value="" selected disabled>Select a option</option>
+            <option value="">Cash</option>
+            <option value="">Credit Card</option>
+          </select>
+          <small class="form-control-feedback">
+            Mandatory field.
+          </small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-info waves-effect"
+          data-dismiss="modal"
+        >
+          Add Payment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modalPaid" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Payment Received</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <h5>Lucas Leite</h5>
+            <h6 class="text-muted">
+              <i class="fa fa-phone"></i> 71 99126-2602
+            </h6>
+            <h6 class="text-muted">
+              <i class="fa fa-envelope"></i> me@lucasleite.us
+            </h6>
+          </div>
+          <div class="col-lg-6">
+            <h6>Started at: <span class="text-muted">April, 5th</span></h6>
+            <h6>Monthly Payment: <span class="text-muted">R$ 760</span></h6>
+            <h6>Classes per Week: <span class="text-muted">5</span></h6>
+            <h6>Payment Date: <span class="text-muted">12</span></h6>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h6 class="text-info">Received R$ 500 at April, 5th by Cash.</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger waves-effect"
+          data-dismiss="modal"
+        >
+          Cancel Payment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+
+<script>
+  $(".student").on("click", function() {
+    $("#modalPay").modal("toggle");
+  });
+  $(".student-paid").on("click", function() {
+    $("#modalPaid").modal("toggle");
+  });
+  $(".clockpicker")
+    .clockpicker({
+      donetext: "Done"
+    })
+    .find("input")
+    .change(function() {
+      console.log(this.value);
+    });
+</script>
+
 {% endblock %}
