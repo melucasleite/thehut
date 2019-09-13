@@ -108,17 +108,23 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex no-block">
-          <h4 class="card-title">Pending Students</h4>
+          <h4 class="card-title">Students</h4>
           <div class="ml-auto">
-            <select class="custom-select"> </select>
+            <select class="form-control text-info">
+              <option value="">All Months</option>
+              <option value="">August 2019</option>
+            </select>
           </div>
+        </div>
+        <div>
+          <input type="checkbox" id="basic_checkbox_1" checked />
+          <label for="basic_checkbox_1">Show only pending</label>
         </div>
         <div class="table-responsive m-t-20">
           <table class="table stylish-table">
             <thead>
               <td colspan="2">Student</td>
-              <td>Lectures</td>
-              <td>Date</td>
+              <td>Due Date</td>
               <td>Frequency</td>
               <td>Amount</td>
               <td>Payment</td>
@@ -132,9 +138,8 @@
                   <h6>Lucas Leite</h6>
                   <small class="text-muted">3 classes, 4 weeks</small>
                 </td>
-                <td>Advanced 1, Advanced 2, Advanced 3</td>
-                <td>May, 5th</td>
-                <td>70%</td>
+                <td>05/01/2019</td>
+                <td>70% (23/30)</td>
                 <td>R$ 120</td>
                 <td>
                   <span class="label label-danger">Pending</span>
@@ -148,9 +153,8 @@
                   <h6>Marcos Araujo</h6>
                   <small class="text-muted">3 classes, 4 weeks</small>
                 </td>
-                <td>Advanced 1, Advanced 2, Advanced 3</td>
-                <td>May, 5th</td>
-                <td>70%</td>
+                <td>05/01/2019</td>
+                <td>70% (23/30)</td>
                 <td>R$ 120</td>
                 <td>
                   <span class="label label-danger">Pending</span>
@@ -164,9 +168,8 @@
                   <h6>Paulo Octavio</h6>
                   <small class="text-muted">3 classes, 4 weeks</small>
                 </td>
-                <td>Advanced 1, Advanced 2, Advanced 3</td>
-                <td>May, 5th</td>
-                <td>70%</td>
+                <td>05/01/2019</td>
+                <td>70% (23/30)</td>
                 <td>R$ 120</td>
                 <td>
                   <span class="label label-danger">Pending</span>
@@ -185,9 +188,8 @@
                   <h6>Alice</h6>
                   <small class="text-muted">3 classes, 12 weeks</small>
                 </td>
-                <td>Advanced 1, Advanced 2, Advanced 3</td>
-                <td>May, 5th</td>
-                <td>70%</td>
+                <td>05/01/2019</td>
+                <td>70% (23/30)</td>
                 <td>R$ 120</td>
                 <td>
                   <span class="label label-danger">Pending</span>
@@ -206,9 +208,8 @@
                   <h6>Andrew</h6>
                   <small class="text-muted">3 classes, 7 weeks</small>
                 </td>
-                <td>Advanced 1, Advanced 2, Advanced 3</td>
-                <td>May, 5th</td>
-                <td>70%</td>
+                <td>05/01/2019</td>
+                <td>70% (23/30)</td>
                 <td>R$ 120</td>
                 <td>
                   <span class="label label-info">Paid</span>
@@ -240,6 +241,9 @@
             </h6>
             <h6 class="text-muted">
               <i class="fa fa-envelope"></i> me@lucasleite.us
+            </h6>
+            <h6 class="text-muted">
+              <a href="/students" target="_blank">Student Profile</a>
             </h6>
           </div>
           <div class="col-lg-6">
@@ -309,6 +313,9 @@
             <h6 class="text-muted">
               <i class="fa fa-envelope"></i> me@lucasleite.us
             </h6>
+            <h6 class="text-muted">
+              <a href="/students" target="_blank">Student Profile</a>
+            </h6>
           </div>
           <div class="col-lg-6">
             <h6>Started at: <span class="text-muted">April, 5th</span></h6>
@@ -319,7 +326,11 @@
         </div>
       </div>
       <div class="modal-body">
-        <h6 class="text-info">Received R$ 500 at April, 5th by Cash.</p>
+        <h6>
+          Received <b class="text-danger">R$ 500</b> at
+          <b class="text-info">05/04/2014</b> by
+          <b class="text-warning">Cash.</b>
+        </h6>
       </div>
       <div class="modal-footer">
         <button
