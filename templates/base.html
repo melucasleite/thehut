@@ -36,8 +36,41 @@
       href="/static/assets/plugins/css-chart/css-chart.css"
       rel="stylesheet"
     />
+    <link
+      href="/static/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+      rel="stylesheet"
+    />
+    <!-- Page plugins css -->
+    <link
+      href="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
+      rel="stylesheet"
+    />
+    <!-- Color picker plugins css -->
+    <link
+      href="/static/assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css"
+      rel="stylesheet"
+    />
+    <!-- Date picker plugins css -->
+    <link
+      href="/static/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Daterange picker plugins css -->
+    <link
+      href="/static/assets/plugins/timepicker/bootstrap-timepicker.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/daterangepicker/daterangepicker.css"
+      rel="stylesheet"
+    />
     <!--This page css - Morris CSS -->
     <link href="/static/assets/plugins/c3-master/c3.min.css" rel="stylesheet" />
+    <link
+      href="/statuc/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
+      rel="stylesheet"
+    />
     <!-- Vector CSS -->
     <link
       href="/static/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
@@ -267,7 +300,9 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
-                      <a href="#"><i class="ti-settings"></i> Setting</a>
+                      <a href="/settings"
+                        ><i class="ti-settings"></i> Setting</a
+                      >
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
@@ -293,27 +328,43 @@
                 </a>
               </li>
               <li>
-                <a class="waves-effect waves-dark" href="lectures">
+                <a class="waves-effect waves-dark" href="/lectures">
                   <i class="mdi mdi-calendar"></i>
                   <span class="hide-menu">Lectures</span>
                 </a>
               </li>
               <li>
-                <a class="waves-effect waves-dark" href="students">
+                <a class="waves-effect waves-dark" href="/students">
                   <i class="mdi mdi-calendar"></i>
                   <span class="hide-menu">Students</span>
                 </a>
               </li>
               <li>
-                <a class="waves-effect waves-dark" href="finances">
+                <a class="waves-effect waves-dark" href="/finances">
                   <i class="mdi mdi-calendar"></i>
                   <span class="hide-menu">Finances</span>
                 </a>
+              </li>
+              <li>
+                <a
+                  class="has-arrow waves-effect waves-dark"
+                  href="#"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-gauge"></i
+                  ><span class="hide-menu">Settings </span></a
+                >
+                <ul aria-expanded="false" class="collapse">
+                  <li><a href="/settings/lectures">Lectures</a></li>
+                </ul>
+                <ul aria-expanded="false" class="collapse">
+                  <li><a href="/settings/evaluation">Evaluation</a></li>
+                </ul>
               </li>
             </ul>
           </nav>
         </div>
       </aside>
+
       <div class="page-wrapper">
         <div class="container-fluid">
           {% block content %}{% endblock %}
@@ -323,8 +374,8 @@
           <a href="https://lucasleite.us">Lucas Leite</a>
         </footer>
       </div>
+      {% block modals %}{% endblock %}
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.2.0/handlebars.min.js"></script>
     <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
     <script src="/static/assets/plugins/select2/dist/js/select2.full.min.js"></script>
     <script src="/static/assets/plugins/popper/popper.min.js"></script>
@@ -346,6 +397,8 @@
     <script src="/static/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
     <script src="/static/js/dashboard2.js"></script>
     <script src="/static/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- Page plugins css -->
+    <script src="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
     {% block scripts %} {% endblock %}
   </body>
 </html>

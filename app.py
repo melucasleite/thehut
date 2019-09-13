@@ -32,5 +32,15 @@ def lectures():
     return render_template("lectures.html")
 
 
+@app.route("/settings/lectures")
+def settings_lectures():
+    return render_template("settings/lectures.html")
+
+
+@app.route("/settings/evaluation")
+def settings_evaluation():
+    return render_template("settings/evaluation.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

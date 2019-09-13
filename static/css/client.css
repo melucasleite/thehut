@@ -1,8 +1,42 @@
 .client-logo {
-    max-height: 50px;
+  max-height: 50px;
 }
 
-.sidebar-nav > ul > li.active > a, .sidebar-nav > ul > li.active:hover > a {
-    color: #ffffff !important;
-    background: #263238 !important;
+.sidebar-nav > ul > li.active > a,
+.sidebar-nav > ul > li.active:hover > a {
+  color: #ffffff !important;
+  background: #263238 !important;
+}
+
+.label-bg {
+  font-size: 16px;
+  padding: 9px;
+}
+
+.clockpicker-popover {
+  z-index: 999999;
+}
+
+.form-control:focus {
+  color: #747d8a !important;
+}
+
+html body .text-primary {
+  color: #7460ee !important;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #444e57 !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #444e57;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #444e57;
 }
