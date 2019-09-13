@@ -37,9 +37,9 @@ def settings_lectures():
     return render_template("settings/lectures.html")
 
 
-@app.route("/settings/evaluation")
-def settings_evaluation():
-    return render_template("settings/evaluation.html")
+@app.route("/settings/student-evaluation")
+def settings_student_evaluation():
+    return render_template("settings/student-evaluation.html")
 
 
 if __name__ == "__main__":
