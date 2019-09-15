@@ -42,5 +42,10 @@ def settings_student_evaluation():
     return render_template("admin/settings/student-evaluation.html")
 
 
+@app.route("/student-signin")
+def student_signin():
+    return render_template("student-signin.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

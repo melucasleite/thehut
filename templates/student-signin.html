@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Favicon icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/assets/images/favicon.png"
+    />
+    <title>The Hut</title>
+    <link
+      href="/static/assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- chartist CSS -->
+    <link
+      href="/static/assets/plugins/chartist-js/dist/chartist.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/chartist-js/dist/chartist-init.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/css-chart/css-chart.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+      rel="stylesheet"
+    />
+    <!-- Page plugins css -->
+    <link
+      href="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
+      rel="stylesheet"
+    />
+    <!-- Color picker plugins css -->
+    <link
+      href="/static/assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css"
+      rel="stylesheet"
+    />
+    <!-- Date picker plugins css -->
+    <link
+      href="/static/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Daterange picker plugins css -->
+    <link
+      href="/static/assets/plugins/timepicker/bootstrap-timepicker.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/daterangepicker/daterangepicker.css"
+      rel="stylesheet"
+    />
+    <!--This page css - Morris CSS -->
+    <link href="/static/assets/plugins/c3-master/c3.min.css" rel="stylesheet" />
+    <link
+      href="/statuc/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
+      rel="stylesheet"
+    />
+    <!-- Vector CSS -->
+    <link
+      href="/static/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/plugins/select2/dist/css/select2.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/static/assets/plugins/rangeslider/rangeslider.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom CSS -->
+    <link href="/static/css/style.css" rel="stylesheet" />
+    <!-- You can change the theme colors from here -->
+    <link href="/static/css/colors/blue-dark.css" id="theme" rel="stylesheet" />
+    <link href="/static/css/client.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="fix-header fix-sidebar logo-center card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader" style="display: None">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle
+          class="path"
+          cx="50"
+          cy="50"
+          r="20"
+          fill="none"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        />
+      </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+      <!-- ============================================================== -->
+      <!-- Topbar header - style you can find in pages.scss -->
+      <!-- ============================================================== -->
+      <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+          <!-- ============================================================== -->
+          <!-- Logo -->
+          <!-- ============================================================== -->
+          <div class="navbar-header">
+            <img src="/static/assets/images/client/navbar-logo.png" alt="" />
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Logo -->
+          <!-- ============================================================== -->
+          <div class="navbar-collapse">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav mr-auto mt-md-0">
+              <!-- This is  -->
+              <li class="nav-item">
+                <a
+                  class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  ><i class="mdi mdi-menu"></i
+                ></a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  ><i class="ti-menu"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+              <li>
+                <a class="waves-effect waves-dark" href="/">
+                  1.
+                  <span class="hide-menu">Lecture Plan</span>
+                  <i class="fa fa-check"></i>
+                </a>
+              </li>
+
+              <li class="hide-menu">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <ul class="mt-0 pt-0">
+                      <span class="badge badge-outline-inverse">
+                        3 Aulas por semana </span
+                      ><span class="badge badge-outline-inverse">
+                        Curso de 14 Semanas
+                      </span>
+                      <span class="badge badge-outline-inverse">
+                        R$ 200 por mes
+                      </span>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="text-info">
+                <a class="waves-effect waves-dark" href="/lectures">
+                  2.
+                  <span class="hide-menu">Schedule</span>
+                  <i class="fa fa-check"></i>
+                </a>
+              </li>
+              <li class="hide-menu">
+                <div class="card">
+                  <div class="card-body p-2">
+                    <ul class="mt-0 pt-0">
+                      <li>
+                        <span class="badge badge-outline-inverse">
+                          Intermediate - QUA 08:20
+                        </span>
+                      </li>
+                      <li>
+                        <span class="badge badge-outline-inverse">
+                          Intermediate - QUA 08:20
+                        </span>
+                      </li>
+                      <li>
+                        <span class="badge badge-outline-inverse">
+                          Intermediate - QUA 08:20
+                        </span>
+                      </li>
+                      <li>
+                        <span class="badge badge-outline-inverse">
+                          Intermediate - QUA 08:20
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a class="waves-effect waves-dark" href="/students">
+                  3.
+                  <span class="hide-menu">Register</span>
+                  <i class="fa fa-check"></i>
+                </a>
+              </li>
+              <li>
+                <a class="waves-effect waves-dark" href="/finances">
+                  4.
+                  <span class="hide-menu">Selfie</span>
+                  <i class="fa fa-check"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="page-wrapper">
+        <div class="container-fluid pt-5">
+          <div id="step1">
+            <div class="row">
+              <div class="col-lg-6 text-center">
+                <div class="range-slider">
+                  <p class="range-title mb-3">Quantas aulas por semana?</p>
+                  <p class="range-value">
+                    <span class="lectureCount"></span> Aulas
+                  </p>
+                  <input
+                    id="lectureRange"
+                    class="input-range"
+                    type="range"
+                    value="3"
+                    min="3"
+                    max="15"
+                    step="1"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 text-center">
+                <div class="range-slider">
+                  <p class="range-title mb-3">Quantas semanas?</p>
+                  <p class="range-value">
+                    <span id="weekCount"></span> Semanas
+                  </p>
+                  <input
+                    id="weekRange"
+                    class="input-range"
+                    type="range"
+                    value="1"
+                    min="1"
+                    max="24"
+                    step="1"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <table class="table table-bordered">
+                  <tbody class="text-center">
+                    <tr>
+                      <td>
+                        <p class="" style="font-size: 30px">
+                          R$ <span id="lectureCost"></span>
+                          <span class="text-muted" style="font-size: 15px">
+                            /aula
+                          </span>
+                        </p>
+                      </td>
+                      <td>
+                        <p class="" style="font-size: 30px">
+                          R$ <span id="monthCost"></span>
+                          <span class="text-muted" style="font-size: 15px">
+                            /mes
+                          </span>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="" style="font-size: 30px">
+                          R$ <span id="weekCost"></span>
+                          <span class="text-muted" style="font-size: 15px">
+                            /semana
+                          </span>
+                        </p>
+                      </td>
+                      <td>
+                        <p class="" style="font-size: 30px">
+                          R$ <span id="totalCost"></span>
+                          <span class="text-muted" style="font-size: 15px">
+                            total
+                          </span>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-5 row">
+              <button
+                class="btn btn-info btn-waves ml-auto mr-auto"
+                onclick="next1();"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+          <div id="step2" class="text-center" style="display: None">
+            <h3>Selecione seus horarios</h3>
+            <h3>
+              <span class="selectedCount"></span>/<span
+                class="lectureCount"
+              ></span>
+              <i class="mdi mdi-grid"></i>
+            </h3>
+            <div>
+              <table class="table table-bordered table-striped">
+                <thead class="text-center">
+                  <td></td>
+                  <td>Segunda</td>
+                  <td>Terca</td>
+                  <td>Quarta</td>
+                  <td>Quinta</td>
+                  <td>Sexta</td>
+                  <td>Sabado</td>
+                </thead>
+                <tbody class="text-center">
+                  <!-- 07:20 -->
+                  <tr>
+                    <td style="min-width: 150px">
+                      07:20 - 08:50
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 09:00 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      09:00 - 10:30
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 10:40 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      10:40 - 12:10
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 14:20 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      14h20 - 15:30
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-warning label-md"
+                        >Advanced
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 15:30 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      15:30 - 17:00
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-info label-md"
+                        >Intermediate
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 17:00 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      17:00 - 19:10
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-danger label-md"
+                        >Fundamentals
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                  <!-- 19:10 -->
+                  <tr>
+                    <td class="text-center" style="min-width: 150px">
+                      19:10 - 20:40
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-success label-md"
+                        >FAQ & QA
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-success label-md"
+                        >FAQ & QA
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-success label-md"
+                        >FAQ & QA
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-success label-md"
+                        >FAQ & QA
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-success label-md"
+                        >FAQ & QA
+                      </span>
+                    </td>
+                    <td class="lecture-td">
+                      <span class="badge badge-outline-primary label-md"
+                        >Special Classes
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-5 row">
+              <button
+                class="btn btn-info btn-waves ml-auto mr-auto"
+                onclick="back1();"
+              >
+                Voltar
+              </button>
+              <button
+                id="next2"
+                class="btn btn-info btn-waves ml-auto mr-auto"
+                onclick="next2();"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+          <div
+            id="step3"
+            class="text-center"
+            style="height: 80vh"
+            style="display: None !important"
+          >
+            <div class="pt-5">
+              <h1>
+                <span class="text-info">1. </span>Qual seu <b>Nome Completo</b>?
+              </h1>
+              <input id="name" type="text" class="form-control mt-5" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {% block modals %}{% endblock %}
+    </div>
+    <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="/static/assets/plugins/jquery/jquery-ui.min.js"></script>
+    <script src="/static/assets/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script src="/static/assets/plugins/popper/popper.min.js"></script>
+    <script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.slimscroll.js"></script>
+    <script src="/static/js/waves.js"></script>
+    <script src="/static/js/sidebarmenu.js"></script>
+    <script src="/static/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="/static/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/static/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="/static/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/static/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/static/js/custom.min.js"></script>
+    <script src="/static/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="/static/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="/static/assets/plugins/d3/d3.min.js"></script>
+    <script src="/static/assets/plugins/c3-master/c3.min.js"></script>
+    <script src="/static/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="/static/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+    <script src="/static/js/dashboard2.js"></script>
+    <script src="/static/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <!-- Page plugins css -->
+    <script src="/static/assets/plugins/rangeslider/rangeslider.js"></script>
+    <script src="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    {% block scripts %} {% endblock %}
+  </body>
+</html>
