@@ -23,7 +23,7 @@
 }
 
 .form-control:focus {
-  color: #747d8a !important;
+  color: #747d8a;
 }
 
 html body .text-primary {

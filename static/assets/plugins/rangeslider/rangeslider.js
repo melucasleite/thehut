@@ -86,10 +86,11 @@ var priceWeekBase = {
 
 // $("#step1").hide();
 // $("#step2").hide();
-
-// $("#name").focus();
-
-$("#step3").hide();
+// $("#step3").hide();
+// $("#step4").hide();
+// $("#step5").hide();
+// $("#step6").hide();
+// $("#step8").hide();
 
 function next1() {
   console.log("next1");
@@ -105,6 +106,38 @@ function next2() {
     $("#name").focus();
   });
 }
+function next3() {
+  console.log("next3");
+  $("#step3").fadeOut(function() {
+    $("#step4").fadeIn();
+    $("#email").focus();
+  });
+}
+function next4() {
+  console.log("next4");
+  $("#step4").fadeOut(function() {
+    $("#step5").fadeIn();
+    $("#cellphone").focus();
+  });
+}
+function next5() {
+  console.log("next5");
+  $("#step5").fadeOut(function() {
+    $("#step6").fadeIn();
+  });
+}
+function next6() {
+  console.log("next6");
+  $("#step6").fadeOut(function() {
+    $("#step7").fadeIn();
+  });
+}
+function next7() {
+  console.log("next7");
+  $("#main-wrapper").fadeOut(function() {
+    $("#step8").fadeIn();
+  });
+}
 
 function back1() {
   console.log("back1");
@@ -118,4 +151,9 @@ $(".lecture-td").on("click", function(lecture) {
     ? $(this).toggleClass("active")
     : $(this).removeClass("active");
   refresh();
+});
+
+$(document).ready(function() {
+  // Basic
+  $(".dropify").dropify();
 });
