@@ -27,6 +27,11 @@ def students():
     return render_template("admin/students.html")
 
 
+@app.route("/students/review")
+def students_review():
+    return render_template("admin/students-review.html")
+
+
 @app.route("/lectures")
 def lectures():
     return render_template("admin/lectures.html")

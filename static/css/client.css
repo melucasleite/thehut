@@ -163,3 +163,13 @@ html body .text-primary {
 .lecture-td.active > .badge-outline-inverse {
   background: #2f3d4a;
 }
+
+.skill-review p {
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
+
+.skill-review i {
+  color: #ffb22b;
+}

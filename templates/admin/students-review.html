@@ -1,0 +1,350 @@
+{% extends "admin/base.html" %} {% block content %}
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor">Review</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+      <li class="breadcrumb-item">Students</li>
+      <li class="breadcrumb-item active">Review</li>
+    </ol>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+
+<!-- Row -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Classes Pending Review</h4>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="form-control select2"
+          />
+        </div>
+        <div class="table-responsive m-t-20">
+          <table class="table stylish-table table-striped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Lecture</th>
+                <th>Students</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>25/02</td>
+                <td>Intermediate</td>
+                <td>30</td>
+                <td>
+                  <button class="btn btn-outline-info check-lecture">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>25/02</td>
+                <td>Intermediate</td>
+                <td>30</td>
+                <td>
+                  <button class="btn btn-outline-info check-lecture">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>25/02</td>
+                <td>Intermediate</td>
+                <td>30</td>
+                <td>
+                  <button
+                    class="btn btn-outline-info check-lecture"
+                    data-id="wow2"
+                  >
+                    <i class="fa fa-check"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {%block scripts %}
+<script src="/static/js/students-review.js"></script>
+{% endblock %} {%block modals %}
+
+<div id="modalLectureReview" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Lecture Review</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4>Intermediate I</h4>
+            <h6 class="text-muted">21/04/1994</h6>
+            <h6 class="text-muted">
+              08:00 - 09:40
+            </h6>
+          </div>
+        </div>
+        <div class="text-center mb-5">
+          <div class="card">
+            <div class="card-body">
+              <img
+                class="round student-img"
+                src="/static/assets/images/users/1.jpg"
+                alt=""
+              />
+              <h5 class="student-name mt-3">Lucas Meira Leite</h5>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" id="step1">
+          <div class="row">
+            <div class="col-6">
+              <button
+                onclick="next1()"
+                class="btn btn-danger btn-waves pt-4 pr-4 pl-4"
+              >
+                <i class="fa fa-times fa-2x"></i>
+                <p>Missed</p>
+              </button>
+            </div>
+            <div class="col-6 text-info">
+              <button
+                onclick="next1()"
+                class="btn btn-info btn-waves pt-4 pr-4 pl-4"
+              >
+                <i class="fa fa-check fa-2x"></i>
+                <p>Present</p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" id="step2" style="display: none">
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <div class="skill-review">
+            <p>Speaking</p>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-lg"></i>
+          </div>
+          <button class="btn btn-info mt-5" onclick="next2()">Next</button>
+        </div>
+        <div class="text-center" id="step3" style="display: none">
+          <h6>Remarks</h6>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td class="text-danger">To improve</td>
+                <td></td>
+                <td class="text-success">Strenght</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_1"
+                    class="chk-col-red filled-in "
+                  />
+                  <label for="md_checkbox_1"></label>
+                </td>
+                <td>Acurracy</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id="md_checkbox_2"
+                    class="chk-col-blue filled-in "
+                  />
+                  <label for="md_checkbox_2"></label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-info mt-5" onclick="next3()">Next</button>
+        </div>
+        <div id="step4" style="display: None">
+          <label>Tutor's comment</label>
+          <textarea class="form-control" cols="30" rows="10"></textarea>
+          <button class="btn btn-info mt-5" onclick="next4()">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
