@@ -41,6 +41,19 @@ def lectures():
 def settings_lectures():
     return render_template("admin/settings/lectures.html")
 
+@app.route("/settings")
+def settings():
+    return render_template("admin/settings/settings.html")
+
+
+@app.route("/settings/profile")
+def settings_profile():
+    return render_template("admin/settings/profile.html")
+
+@app.route("/settings/password")
+def settings_password():
+    return render_template("admin/settings/password.html")
+
 
 @app.route("/settings/student-evaluation")
 def settings_student_evaluation():
