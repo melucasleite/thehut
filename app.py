@@ -47,6 +47,11 @@ def settings_student_evaluation():
     return render_template("admin/settings/student-evaluation.html")
 
 
+@app.route("/settings/teachers")
+def settings_teachers():
+    return render_template("admin/settings/teachers.html")
+
+
 @app.route("/student-signin")
 def student_signin():
     return render_template("student-signin.html")
