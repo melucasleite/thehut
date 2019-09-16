@@ -102,8 +102,6 @@ input::-moz-focus-inner {
 }
 
 .form-big input {
-  font-size: 50px;
-  height: 60px;
   color: #ddd !important;
   text-align: center;
 }

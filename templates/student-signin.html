@@ -329,15 +329,37 @@
               </button>
             </div>
           </div>
-          <div id="step2" class="text-center card" style="display: None">
+          <div id="step2" class="text-center card" style="display: none">
             <div class="card-body">
-              <h3>Selecione seus horarios</h3>
-              <h3>
-                <span class="selectedCount"></span>/<span
-                  class="lectureCount"
-                ></span>
-                <i class="mdi mdi-grid"></i>
-              </h3>
+              <div class="row">
+                <div class="col-lg-2">
+                  <button
+                    class="btn btn-inverse btn-waves ml-auto mr-auto"
+                    onclick="back1();"
+                  >
+                    Voltar
+                  </button>
+                </div>
+                <div class="col-lg-8">
+                  <h3>Selecione seus horarios</h3>
+                  <h3>
+                    <span class="selectedCount"></span>/<span
+                      class="lectureCount"
+                    ></span>
+                    <i class="mdi mdi-grid"></i>
+                  </h3>
+                </div>
+                <div class="col-lg-2">
+                  <button
+                    id="next2"
+                    class="btn btn-info btn-waves ml-auto mr-auto"
+                    onclick="next2();"
+                  >
+                    Continuar
+                  </button>
+                </div>
+              </div>
+
               <div>
                 <table
                   class="table table-responsive table-bordered table-striped"
@@ -620,21 +642,6 @@
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div class="mt-5 row">
-                <button
-                  class="btn btn-inverse btn-waves ml-auto mr-auto"
-                  onclick="back1();"
-                >
-                  Voltar
-                </button>
-                <button
-                  id="next2"
-                  class="btn btn-info btn-waves ml-auto mr-auto"
-                  onclick="next2();"
-                >
-                  Continuar
-                </button>
               </div>
             </div>
           </div>
