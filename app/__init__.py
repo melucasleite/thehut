@@ -1,6 +1,14 @@
 from flask import Flask, render_template
-app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from apscheduler.schedulers.background import BackgroundScheduler
+scheduler = BackgroundScheduler()
+scheduler.start()
 
+app = Flask(__name__)
+app.config.from_object('config')
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 @app.route("/")
 def hello():
