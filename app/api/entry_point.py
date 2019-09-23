@@ -1,8 +1,7 @@
 # encoding: utf-8
 from app import app, db, User
-from app.utils import json_serial
-from flask import render_template, abort
-from flask_login import login_required, current_user
+from flask import abort, render_template
+from flask_login import current_user
 import json
 
 

@@ -3,6 +3,7 @@ from app.api.security import admin_permission
 from flask import render_template
 from flask_login import login_required
 
+
 @app.route("/")
 @login_required
 def user_index():
@@ -45,6 +46,7 @@ def lectures():
 def settings_lectures():
     return render_template("admin/settings/lectures.html")
 
+
 @app.route("/settings")
 @admin_permission.require(http_exception=403)
 def settings():
@@ -55,6 +57,7 @@ def settings():
 @admin_permission.require(http_exception=403)
 def settings_profile():
     return render_template("admin/settings/profile.html")
+
 
 @app.route("/settings/password")
 @admin_permission.require(http_exception=403)
