@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     roles = db.Column(db.JSON)
     # control
     deleted = db.Column(db.Boolean, default=False)
+    blocked = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime)
 
     def __init__(self, name, email, password, cellphone, photo, roles):
@@ -27,4 +28,5 @@ class User(UserMixin, db.Model):
         self.photo = photo
         self.roles = roles
         self.deleted = False
+        self.blocked = False
         self.created_at = datetime.now()

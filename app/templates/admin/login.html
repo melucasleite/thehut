@@ -6,36 +6,41 @@
   >
     <div class="login-box card">
       <div class="card-body">
-        <form class="form-horizontal form-material" id="loginform" action="/">
+        <form
+          class="form-horizontal form-material"
+          onsubmit="login(event, this)"
+        >
           <h3 class="box-title m-b-20">Login</h3>
           <div class="form-group ">
             <div class="col-xs-12">
-              <input class="form-control" type="text" placeholder="Username" />
+              <input
+                class="form-control"
+                name="email"
+                type="text"
+                placeholder="Username"
+                required
+              />
             </div>
           </div>
           <div class="form-group">
             <div class="col-xs-12">
               <input
+                name="password"
                 class="form-control"
                 type="password"
                 placeholder="Password"
+                required
               />
             </div>
           </div>
           <div class="form-group text-center m-t-20">
             <div class="col-xs-12">
               <button
-                class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light"
+                class="btn btn-info btn-lg btn-block waves-effect waves-light"
                 type="submit"
               >
                 Log In
               </button>
-            </div>
-          </div>
-          <div class="form-group m-b-0">
-            <div class="col-sm-12 text-center">
-              Don't have an account?
-              <a href="/register" class="text-info m-l-5"><b>Register</b></a>
             </div>
           </div>
         </form>
@@ -46,12 +51,12 @@
             >
           </div>
         </div>
-        <form class="form-horizontal" id="recoverform" action="index.html">
+        <form class="form-horizontal" id="recoverform" onsubmit="recover(event, this)">
           <div class="form-group ">
             <div class="col-xs-12">
               <h3>Recover Password</h3>
               <p class="text-muted">
-                Enter your Email and instructions will be sent to you!
+                Enter your Email and instructions will be sent to you.
               </p>
             </div>
           </div>
@@ -61,17 +66,19 @@
                 class="form-control"
                 type="text"
                 required=""
+                name="email"
                 placeholder="Email"
+                required
               />
             </div>
           </div>
           <div class="form-group text-center m-t-20">
             <div class="col-xs-12">
               <button
-                class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
+                class="btn btn-danger btn-lg btn-block waves-effect waves-light"
                 type="submit"
               >
-                Reset
+                Reset password
               </button>
             </div>
           </div>
@@ -80,4 +87,11 @@
     </div>
   </div>
 </section>
+{% endblock %} {% block scripts %}
+<script src="/static/assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<link href="/static/assets/plugins/sweetalert2/dark.css" rel="stylesheet" />
+<script src="/static/assets/plugins/polyfill/promise-polyfill.js"></script>
+<script src="/static/app/api.js"></script>
+<script src="/static/app/base.js"></script>
+<script src="/static/app/login.js"></script>
 {% endblock %}

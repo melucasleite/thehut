@@ -250,7 +250,7 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
-                      <a href="/login"
+                      <a href="#" onclick="logout()"
                         ><i class="fa fa-power-off"></i> Logout</a
                       >
                     </li>
@@ -327,6 +327,7 @@
       </div>
       {% block modals %}{% endblock %}
     </div>
+    <script src="/api/entryPoint.js"></script>
     <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
     <script src="/static/assets/plugins/select2/dist/js/select2.full.min.js"></script>
     <script src="/static/assets/plugins/popper/popper.min.js"></script>
@@ -351,6 +352,10 @@
     <script src="/static/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <!-- Page plugins css -->
     <script src="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
-    {% block scripts %} {% endblock %}
+    <script src="/static/app/api.js"></script>
+    <script src="/static/app/base.js"></script>
+    <script src="/static/app/login.js"></script><script src="/static/app/api.js"></script>
+    <script src="/static/app/base.js"></script>
+    <script src="/static/app/login.js"></script>
   </body>
 </html>

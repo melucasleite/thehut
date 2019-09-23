@@ -1,0 +1,1 @@
+var state = {{ state|tojson }};
