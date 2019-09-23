@@ -50,12 +50,6 @@
       href="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
       rel="stylesheet"
     />
-    <!-- Color picker plugins css -->
-    <link
-      href="/static/assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css"
-      rel="stylesheet"
-    />
-    <!-- Date picker plugins css -->
     <link
       href="/static/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"
       rel="stylesheet"
@@ -73,7 +67,7 @@
     <!--This page css - Morris CSS -->
     <link href="/static/assets/plugins/c3-master/c3.min.css" rel="stylesheet" />
     <link
-      href="/statuc/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
+      href="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css"
       rel="stylesheet"
     />
     <!-- Vector CSS -->
@@ -97,7 +91,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="https://kit.fontawesome.com/36809dc1d9.js"></script>
+    <link href="/static/assets/plugins/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
   </head>
 
   <body class="fix-header fix-sidebar logo-center card-no-border">
@@ -145,23 +139,27 @@
                 <a
                   class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
                   href="javascript:void(0)"
-                  ><i class="mdi mdi-menu"></i
-                ></a>
+                >
+                  <i class="fas fa-bars"></i>
+                </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
                   href="javascript:void(0)"
-                  ><i class="ti-menu"></i
-                ></a>
+                >
+                <i class="fas fa-bars"></i>
+                </a>
               </li>
               <li class="nav-item">
-                ~
                 <a
                   class="nav-link text-muted waves-effect waves-dark "
                   href="/student-signin"
-                  ><i class="ti-user round bg-inverse"></i
-                ></a>
+                >
+                  <span class="round bg-inverse">
+                    <i class="far fa-user "></i>
+                  </span>
+                </a>
               </li>
             </ul>
             <!-- ============================================================== -->
@@ -179,7 +177,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="mdi mdi-message"></i>
+                  <i class="far fa-envelope"></i>
                   <div class="notify">
                     <span class="heartbit"></span> <span class="point"></span>
                   </div>
@@ -240,12 +238,14 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
-                      <a href="#"><i class="ti-user"></i> My Profile</a>
+                      <a href="#"
+                        ><i class="far fa-address-card"></i> My Profile</a
+                      >
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
                       <a href="/settings"
-                        ><i class="ti-settings"></i> Setting</a
+                        ><i class="fas fa-cogs"></i> Setting</a
                       >
                     </li>
                     <li role="separator" class="divider"></li>
@@ -267,25 +267,25 @@
             <ul id="sidebarnav">
               <li>
                 <a class="waves-effect waves-dark" href="/">
-                  <i class="mdi mdi-view-grid"></i>
+                  <i class="fas fa-th-large"></i>
                   <span class="hide-menu">Dashboard</span>
                 </a>
               </li>
               <li>
                 <a class="waves-effect waves-dark" href="/lectures">
-                  <i class="fa"></i>
+                  <i class="far fa-calendar"></i>
                   <span class="hide-menu">Lectures</span>
                 </a>
               </li>
               <li>
                 <a class="waves-effect waves-dark" href="/students">
-                  <i class="mdi mdi-calendar"></i>
+                  <i class="fas fa-users"></i>
                   <span class="hide-menu">Students</span>
                 </a>
               </li>
               <li>
                 <a class="waves-effect waves-dark" href="/finances">
-                  <i class="mdi mdi-calendar"></i>
+                  <i class="fas fa-wallet"></i>
                   <span class="hide-menu">Finances</span>
                 </a>
               </li>
@@ -294,17 +294,17 @@
                   class="has-arrow waves-effect waves-dark"
                   href="#"
                   aria-expanded="false"
-                  ><i class="mdi mdi-gauge"></i
-                  ><span class="hide-menu">Settings </span></a
-                >
+                  ><i class="fas fa-cogs"></i>
+                  <span class="hide-menu">Settings </span>
+                </a>
                 <ul aria-expanded="false" class="collapse">
                   <li><a href="/settings/profile">Profile</a></li>
                   <li><a href="/settings/password">Password</a></li>
                   <li><a href="/settings/lectures">Lectures</a></li>
                   <li>
                     <a href="/settings/student-evaluation"
-                      >Student Evaluation</a
-                    >
+                      >Student Evaluation
+                    </a>
                   </li>
                   <li>
                     <a href="/settings/teachers">Teachers</a>
@@ -347,7 +347,6 @@
     <script src="/static/assets/plugins/c3-master/c3.min.js"></script>
     <script src="/static/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="/static/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="/static/js/dashboard2.js"></script>
     <script src="/static/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <!-- Page plugins css -->
     <script src="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
