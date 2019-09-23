@@ -13,6 +13,7 @@ class Student(db.Model):
     # billing
     classes_per_week = db.Column(db.Integer)
     weeks = db.Column(db.Integer)
+    level = db.Column(db.String(180))
     monthly_payment = db.Column(db.Integer)
     message = db.Column(db.String(6000))
     # management
@@ -28,11 +29,12 @@ class Student(db.Model):
     payment_history = db.relationship(
         'StudentPaymentHistory', backref='student', lazy='dynamic')
 
-    def __init__(self, name, cellphone, photo, classes_per_week, weeks, monthly_payment):
+    def __init__(self, name, cellphone, photo, classes_per_week, weeks, level, monthly_payment):
         self.name = name
         self.cellphone = cellphone
         self.photo = photo
         self.classes_per_week = classes_per_week
         self.weeks = weeks
+        self.level = level
         self.deleted = False
         self.created_at = datetime.now()
