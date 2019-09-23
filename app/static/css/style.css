@@ -16,13 +16,6 @@ File: scss
 /*Normal Color*/
 /*Extra Variable*/
 /*Preloader*/
-@import url(../css/icons/font-awesome/css/fontawesome-all.css);
-@import url(../css/icons/simple-line-icons/css/simple-line-icons.css);
-@import url(../css/icons/weather-icons/css/weather-icons.min.css);
-@import url(../css/icons/linea-icons/linea.css);
-@import url(../css/icons/themify-icons/themify-icons.css);
-@import url(../css/icons/flag-icon-css/flag-icon.min.css);
-@import url(../css/icons/material-design-iconic-font/css/materialdesignicons.min.css);
 @import url(../css/spinners.css);
 @import url(../css/animate.css);
 .preloader {
@@ -1540,7 +1533,7 @@ dropdown-item
 Custom-select
 ******************/
 .custom-select {
-  background: url(../../assets/images/custom-select.png) right 0.75rem center no-repeat; }
+  background: url(/static/assets/images/custom-select.png) right 0.75rem center no-repeat; }
 
 /*******************
 textarea
@@ -1810,11 +1803,6 @@ File: scss
     .page-titles .breadcrumb li {
       margin-top: 0px;
       margin-bottom: 0px; }
-    .page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-      content: "\e649";
-      font-family: themify;
-      color: #a6b7bf;
-      font-size: 11px; }
     .page-titles .breadcrumb .breadcrumb-item.active {
       color: #99abb4; }
 
