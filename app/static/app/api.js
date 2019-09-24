@@ -1,8 +1,9 @@
-var apiUrl = "http://localhost:5000/api/";
+var apiUrl = "/api/";
 var defaultApiError = "Occoreu um erro com sua solicitação.";
 var applicationError = "Erro na aplicação. Entre em contato com o suporte.";
 var connectionApiError =
   "Erro de conexão com o servidor. Verifique sua conexão de internet. Caso esteja on-line. Entre em contato com o suporte.";
+var defaultApiSuccess = "Request processed.";
 
 function errorHandler(data) {
   if (data.readyState == 4) {
@@ -19,6 +20,11 @@ function errorHandler(data) {
   }
 }
 
+function defaultSuccess(data, callback) {
+  message = data.message ? data.message : defaultApiSuccess;
+  Swal.fire("Success!", message, "success").then(callback);
+}
+
 function loginRedirect(data) {
-  window.location.href = "/"
+  window.location.href = "/";
 }

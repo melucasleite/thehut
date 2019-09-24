@@ -28,7 +28,7 @@
             />
           </div>
           <div class="col-lg-8">
-            <form>
+            <form onsubmit="updateProfile(event, this)">
               <div class="form-group">
                 <label>Name</label>
                 <input
@@ -42,39 +42,21 @@
               <div class="form-group">
                 <label>Cellphone</label>
                 <input
+                  name="cellphone"
                   type="text"
                   placeholder="(xx) xxxxx-xxxx"
                   class="form-control form-control-line user-cellphone"
                 />
                 <p class="text-danger">Cellphone cant be empty.</p>
               </div>
+              <button type="submit" class="btn btn-info">Update Profile</button>
             </form>
           </div>
         </div>
-        <button class="btn btn-info">Update Profile</button>
       </div>
     </div>
   </div>
 </div>
 {% endblock %} {% block scripts %}
-<style>
-  .select2 {
-    width: 100% !important;
-  }
-</style>
-<script>
-  $(function() {
-    $(".select2").select2();
-    $("#select2").select2();
-    $("#select2")
-      .append(new Option("Lucas Leite (me@lucasleite.us)", 0, false, false))
-      .append(new Option("Uriel Habes (me@lucasleite.us)", 0, false, false))
-      .trigger("change");
-  });
-
-  $(document).ready(function() {
-    // Basic
-    $(".dropify").dropify();
-  });
-</script>
+<script src="/static/app/views//admin/settings/profile.js"></script>
 {% endblock %}
