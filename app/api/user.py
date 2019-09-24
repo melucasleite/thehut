@@ -21,5 +21,27 @@ def api_user_profile_update():
     current_user.name = name
     current_user.cellphone = cellphone
     db.session.commit()
-    response = {"message": "Profile updated.", "redirect":"#"}
+    response = {"message": "Profile updated."}
+    return jsonify(response)
+
+
+@app.route('/api/user/password', methods=["PUT"])
+@login_required
+def api_user_password_update():
+    args = request.form
+    password = args["password"].strip()
+    new_password = args["new_password"].strip()
+    new_password_confirm = args["new_password_confirm"].strip()
+    try:
+        if password != current_user.password:
+            raise Exception("Wrong password.")
+        if new_password != new_password_confirm:
+            raise Exception("Wrong password confirmation.")
+        if (len(new_password) < 6):
+            raise Exception("Password must be at least 6 characters long.")
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+    current_user.password = new_password
+    db.session.commit()
+    response = {"message": "Password updated."}
     return jsonify(response)

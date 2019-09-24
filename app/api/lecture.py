@@ -16,7 +16,6 @@ def api_lecture_get():
     response = {"lectures": lectures}
     return jsonify(response)
 
-
 @app.route('/api/lecture', methods=["DELETE"])
 @login_required
 def api_lecture_delete():
@@ -42,7 +41,7 @@ def api_lecture_post():
     start = datetime.strptime(start, '%H:%M')
     end = datetime.strptime(end, '%H:%M')
     accent_color = args.get("accent_color")
-    if not(day_of_week and name and student_capacity and start and end and accent_color):
+    if not (day_of_week and name and student_capacity and start and end and accent_color):
         raise Exception("Missing fields.")
     lecture = Lecture(day_of_week, start, end,
                       student_capacity, name, accent_color)
@@ -68,7 +67,7 @@ def api_lecture_put():
     start = datetime.strptime(start, '%H:%M')
     end = datetime.strptime(end, '%H:%M')
     accent_color = args.get("accent_color")
-    if not(day_of_week and name and student_capacity and start and end and accent_color):
+    if not (day_of_week and name and student_capacity and start and end and accent_color):
         raise Exception("Missing fields.")
     lecture.day_of_week = day_of_week
     lecture.name = name
