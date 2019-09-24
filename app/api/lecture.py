@@ -77,5 +77,5 @@ def api_lecture_put():
     lecture.end = end
     lecture.accent_color = accent_color
     db.session.commit()
-    response = {"message": "Lecture Updated."} =
+    response = {"message": "Lecture Updated."}
     return jsonify(response)
