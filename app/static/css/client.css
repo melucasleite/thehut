@@ -173,3 +173,8 @@ html body .text-primary {
 .skill-review i {
   color: #ffb22b;
 }
+
+.preloader {
+  opacity: 0.5;
+  background: #263238;
+}
