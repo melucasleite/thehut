@@ -680,12 +680,21 @@
               <h1 class="text-info pt-5 pb-5">Now, lets take a selfie.</h1>
               <div class="card col-md-6 ml-auto mr-auto">
                 <div class="card-body">
-                  <input
-                    type="file"
-                    id="input-file-now-custom-2"
-                    class="dropify"
-                    data-height="500"
-                  />
+                  <form
+                    onchange="uploadFile(event, this)"
+                    enctype="multipart/form-data"
+                    id="upload-form"
+                  >
+                    <input type="hidden" id="photo" />
+                    <input
+                      name="file"
+                      type="file"
+                      data-max-file-size="500K"
+                      data-allowed-file-extensions="jpg jpeg bmp png"
+                      class="dropify"
+                      data-height="500"
+                    />
+                  </form>
                   <div class="mt-5 row">
                     <button
                       class="btn btn-inverse btn-waves ml-auto mr-auto"
@@ -706,88 +715,14 @@
             </div>
           </div>
           <div id="step7" style="display: None">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="card">
-                  <div class="card-body">
-                    <img
-                      class="round mb-3"
-                      src="/static/assets//images/users/1.jpg"
-                    />
-                    <div class="form-group">
-                      <label for="">Nome</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        value="Lucas Meira Leite"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="">E-mail</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        value="me@lucasleite.us"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="">Celular</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        value="(71) 99126-2602"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-8">
-                <div class="card card-body">
-                  <h3>Plano de estudo</h3>
-                  <table class="table table-bordered table-striped">
-                    <tr>
-                      <td>Valor mensal</td>
-                      <td>R$ 300/mes</td>
-                    </tr>
-                    <tr>
-                      <td>Aulas por semana</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>Semanas</td>
-                      <td>10</td>
-                    </tr>
-                    <tr>
-                      <td>Valor por aula</td>
-                      <td>R$ 25,50</td>
-                    </tr>
-                  </table>
-
-                  <h3>Turmas</h3>
-                  <table class="table table-bordered table-striped">
-                    <tbody>
-                      <tr>
-                        <td>Quarta 08:00-12:00</td>
-                        <td>Advanced</td>
-                      </tr>
-                      <tr>
-                        <td>Quinta 08:00-12:00</td>
-                        <td>Advanced</td>
-                      </tr>
-                      <tr>
-                        <td>Sexta 08:00-12:00</td>
-                        <td>Advanced</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button
-                    id="next2"
-                    class="btn btn-info btn-waves ml-auto mt-3"
-                    onclick="next7();"
-                  >
-                    Finalizar
-                  </button>
-                </div>
+            <div class="card">
+              <div class="card-body text-center">
+                <button
+                  class="btn btn-info btn-bg btn-waves"
+                  onclick="next7();"
+                >
+                  Enviar Cadastro
+                </button>
               </div>
             </div>
           </div>
@@ -824,9 +759,13 @@
     <script src="/static/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
     <script src="/static/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <!-- Page plugins css -->
-    <script src="/static/assets/plugins/rangeslider/rangeslider.js"></script>
     <script src="/static/assets/plugins/dropify/dist/js/dropify.min.js"></script>
     <script src="/static/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
-    {% block scripts %} {% endblock %}
+    <script src="/static/assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <link href="/static/assets/plugins/sweetalert2/dark.css" rel="stylesheet" />
+    <script src="/static/assets/plugins/polyfill/promise-polyfill.js"></script>
+    <script src="/static/app/api.js"></script>
+    <script src="/static/app/ui.js"></script>
+    <script src="/static/app/views/student-signin.js"></script>
   </body>
 </html>
