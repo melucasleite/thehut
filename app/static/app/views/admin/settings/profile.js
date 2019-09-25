@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  $(".dropify").dropify();
+  $(".dropify").dropify({
+    defaultFile: AppState.user.photo
+  });
 });
 
 function updateProfile(event, form) {
@@ -25,6 +27,28 @@ function updateProfile(event, form) {
       defaultSuccess(response, function() {
         window.location = "/settings/profile";
       });
+    }
+  });
+}
+
+function uploadFile(event, form) {
+  event.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: apiUrl + "bucket",
+    data: new FormData(form),
+    dataType: "json",
+    contentType: false,
+    cache: false,
+    processData: false,
+    beforeSend: function() {
+      preloaderShow();
+    },
+    complete: function() {
+      preloaderHide();
+    },
+    success: function(response) {
+      $("#image_url").val(response.url);
     }
   });
 }

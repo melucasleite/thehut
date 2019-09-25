@@ -14,6 +14,7 @@ def api_entry_point():
         "email": current_user.email,
         "cellphone": current_user.cellphone,
         "roles": current_user.roles,
+        "photo": current_user.photo,
         "created_at": current_user.created_at.isoformat(),
     }
     state = {

@@ -16,38 +16,43 @@
 <div class="row">
   <!-- Update Profile -->
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card container">
       <div class="card-body">
         <h2><span class="user-name"></span>'s Profile</h2>
         <div class="row">
-          <div class="col-lg-4">
-            <input
-              type="file"
-              class="dropify"
-              data-default-file="/static/assets/images/users/1.jpg"
-            />
-          </div>
-          <div class="col-lg-8">
+          <div class="col-lg-12">
+            <form
+              onchange="uploadFile(event, this)"
+              enctype="multipart/form-data"
+              id="upload-form"
+            >
+              <input
+                name="file"
+                type="file"
+                data-max-file-size="500K"
+                data-allowed-file-extensions="jpg jpeg bmp png"
+                class="dropify"
+              />
+            </form>
             <form onsubmit="updateProfile(event, this)">
               <div class="form-group">
+                <input type="hidden" name="photo" class="user-photo" id="image_url">
                 <label>Name</label>
                 <input
                   type="text"
-                  placeholder="Johnathan Doe"
                   class="form-control user-name"
                   name="name"
+                  required
                 />
-                <p class="text-danger">Name cant be empty.</p>
               </div>
               <div class="form-group">
                 <label>Cellphone</label>
                 <input
                   name="cellphone"
                   type="text"
-                  placeholder="(xx) xxxxx-xxxx"
                   class="form-control form-control-line user-cellphone"
+                  required
                 />
-                <p class="text-danger">Cellphone cant be empty.</p>
               </div>
               <button type="submit" class="btn btn-info">Update Profile</button>
             </form>
@@ -58,5 +63,5 @@
   </div>
 </div>
 {% endblock %} {% block scripts %}
-<script src="/static/app/views//admin/settings/profile.js"></script>
+<script src="/static/app/views/admin/settings/profile.js"></script>
 {% endblock %}

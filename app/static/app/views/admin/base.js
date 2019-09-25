@@ -5,4 +5,5 @@ $(document).ready(function() {
   $(".user-email").val(AppState.user.email);
   $(".user-cellphone").html(AppState.user.cellphone);
   $(".user-cellphone").val(AppState.user.cellphone);
+  $(".user-photo").attr("src", AppState.user.photo);
 });

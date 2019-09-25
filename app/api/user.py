@@ -12,6 +12,7 @@ def api_user_profile_update():
     args = request.form
     name = args["name"].strip()
     cellphone = args["cellphone"].strip()
+    photo = args["photo"]
     cellphone = ''.join(filter(lambda x: x.isdigit(), cellphone))
     try:
         if (len(name) < 10 or len(cellphone) < 10):
@@ -20,6 +21,8 @@ def api_user_profile_update():
         return jsonify({"message": str(e)}), 500
     current_user.name = name
     current_user.cellphone = cellphone
+    if photo:
+        current_user.photo = photo
     db.session.commit()
     response = {"message": "Profile updated."}
     return jsonify(response)
