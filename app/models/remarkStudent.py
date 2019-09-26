@@ -8,6 +8,7 @@ class RemarkStudent(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
     remark_id = db.Column(db.Integer, db.ForeignKey('remark.id'))
+    student_lecture_history_id = db.Column(db.Integer, db.ForeignKey('student_lecture_history.id'))
     # control
     created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)

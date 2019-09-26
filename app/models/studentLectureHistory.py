@@ -9,8 +9,8 @@ class StudentLectureHistory(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     date = db.Column(db.DateTime)
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
-    skills = db.relationship('SkillStudent', backref='lecture', lazy='dynamic')
-    remarks = db.relationship('RemarkStudent', backref='lecture', lazy='dynamic')
+    skills = db.relationship('SkillStudent', backref='student_lecture_history', lazy='dynamic')
+    remarks = db.relationship('RemarkStudent', backref='student_lecture_history', lazy='dynamic')
     # control
     created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)

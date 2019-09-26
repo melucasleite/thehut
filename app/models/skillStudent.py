@@ -8,10 +8,11 @@ class SkillStudent(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
+    student_lecture_history_id = db.Column(db.Integer, db.ForeignKey('student_lecture_history.id'))
     skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'))
     grade = db.Column(db.Integer)
     # control
-    created_at = db.Column(db.Datetime)
+    created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
 
     def __init__(self, student_id, lecture_id, skill_id, grade):

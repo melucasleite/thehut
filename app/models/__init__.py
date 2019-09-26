@@ -5,6 +5,7 @@ from app.models.lectureStudent import LectureStudent
 from app.models.remark import Remark
 from app.models.remarkStudent import RemarkStudent
 from app.models.skill import Skill
+from app.models.skillStudent import SkillStudent
 from app.models.student import Student
 from app.models.studentLectureHistory import StudentLectureHistory
 from app.models.studentPaymentHistory import StudentPaymentHistory
