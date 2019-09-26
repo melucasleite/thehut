@@ -15,7 +15,7 @@ class StudentPaymentHistory(db.Model):
     amount = db.Column(db.Integer)
     payment_method = db.Column(db.String(180))
     # control
-    created_at = db.Column(db.Datetime)
+    created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
 
     def __init__(self, student_id, due_date, payment_date, amount, payment_method):

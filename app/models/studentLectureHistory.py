@@ -12,7 +12,7 @@ class StudentLectureHistory(db.Model):
     skills = db.relationship('SkillStudent', backref='lecture', lazy='dynamic')
     remarks = db.relationship('RemarkStudent', backref='lecture', lazy='dynamic')
     # control
-    created_at = db.Column(db.Datetime)
+    created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
 
     def __init__(self, student_id, date, lecture_id):

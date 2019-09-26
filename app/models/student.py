@@ -20,14 +20,15 @@ class Student(db.Model):
     deleted = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime)
     # relationships
-    # lectures = db.relationship(
-    #    'LectureStudent', backref='student', lazy='dynamic')
-    #skills = db.relationship('SkillStudent', backref='student', lazy='dynamic')
-    #remarks = db.relationship('RemarkStudent', backref='student', lazy='dynamic')
-    # lecture_history = db.relationship(
-    #    'StudentLectureHistory', backref='student', lazy='dynamic')
-    # payment_history = db.relationship(
-    #    'StudentPaymentHistory', backref='student', lazy='dynamic')
+    lectures = db.relationship(
+        'LectureStudent', backref='student', lazy='dynamic')
+    skills = db.relationship('SkillStudent', backref='student', lazy='dynamic')
+    remarks = db.relationship(
+        'RemarkStudent', backref='student', lazy='dynamic')
+    lecture_history = db.relationship(
+        'StudentLectureHistory', backref='student', lazy='dynamic')
+    payment_history = db.relationship(
+        'StudentPaymentHistory', backref='student', lazy='dynamic')
 
     def __init__(self, name, email, cellphone, photo, classes_per_week, weeks, level, monthly_payment):
         self.name = name

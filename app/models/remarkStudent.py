@@ -9,7 +9,7 @@ class RemarkStudent(db.Model):
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
     remark_id = db.Column(db.Integer, db.ForeignKey('remark.id'))
     # control
-    created_at = db.Column(db.Datetime)
+    created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
 
     def __init__(self, student_id, lecture_id, remark_id):

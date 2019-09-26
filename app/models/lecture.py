@@ -15,13 +15,13 @@ class Lecture(db.Model):
     name = db.Column(db.String(180))
     accent_color = db.Column(db.String(180))
     # relationships
-    """ students = db.relationship(
+    students = db.relationship(
         'LectureStudent', backref='lecture', lazy='dynamic')
     skills = db.relationship('SkillStudent', backref='lecture', lazy='dynamic')
     remarks = db.relationship(
         'RemarkStudent', backref='lecture', lazy='dynamic')
     lecture_history = db.relationship(
-        'StudentLectureHistory', backref='lecture', lazy='dynamic') """
+        'StudentLectureHistory', backref='lecture', lazy='dynamic')
     # control
     created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
