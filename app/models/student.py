@@ -30,14 +30,14 @@ class Student(db.Model):
     payment_history = db.relationship(
         'StudentPaymentHistory', backref='student', lazy='dynamic')
 
-    def __init__(self, name, email, cellphone, photo, classes_per_week, weeks, level, monthly_payment):
+    def __init__(self, name, email, cellphone, photo, classes_per_week, weeks, level_id, monthly_payment):
         self.name = name
         self.email = email
         self.cellphone = cellphone
         self.photo = photo
         self.classes_per_week = classes_per_week
         self.weeks = weeks
-        self.level = level
+        self.level_id = level_id
         self.monthly_payment = monthly_payment
         self.message = ""
         self.deleted = False

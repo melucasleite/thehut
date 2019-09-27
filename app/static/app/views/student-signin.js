@@ -27,6 +27,7 @@ var student = {
 $(function() {
   refresh();
   loadLectures();
+  loadLevels();
 });
 
 function refresh() {
@@ -102,6 +103,13 @@ var priceWeekBase = {
 // $("#step5").hide();
 // $("#step6").hide();
 // $("#step8").hide();
+
+function next0(id) {
+  student.level = id;
+  $("#step0").fadeOut(function() {
+    $("#step1").fadeIn();
+  });
+}
 
 function next1() {
   student.monthly_payment = $("#monthCost").html();
@@ -272,6 +280,7 @@ function renderLectures(lectures) {
 
 function groupLectures(lectures) {
   time = lectures
+    .sort((a, b) => a.start.valueOf() - b.start.valueOf())
     .map(function(lecture) {
       timestamp =
         lecture.start.format("HH:mm") + " - " + lecture.end.format("HH:mm");
@@ -298,4 +307,20 @@ function groupLectures(lectures) {
     }
   });
   return groups;
+}
+
+function loadLevels() {
+  $.ajax({
+    url: apiUrl + "level",
+    method: "GET",
+    success: function(data) {
+      console.log(data);
+      renderLevels(data.levels);
+    }
+  });
+}
+
+function renderLevels(levels) {
+  $template = $("#template_level");
+  $template.render(levels).appendTo("#levels");
 }

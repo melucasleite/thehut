@@ -22,7 +22,12 @@ function errorHandler(data) {
 
 function defaultSuccess(data, callback) {
   message = data.message ? data.message : defaultApiSuccess;
-  Swal.fire("Success!", message, "success").then(callback);
+  Swal.fire({
+    title: "Success!",
+    text: message,
+    timer: 2000,
+    type: "success"
+  }).then(callback);
 }
 
 function loginRedirect(data) {

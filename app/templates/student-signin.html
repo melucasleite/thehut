@@ -85,6 +85,7 @@
       href="/static/assets/plugins/fontawesome/css/all.css"
       rel="stylesheet"
     />
+    <link href="/static/css/client.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="/static/css/style.css" rel="stylesheet" />
     <!-- You can change the theme colors from here -->
@@ -241,7 +242,14 @@
 
       <div class="page-wrapper">
         <div class="container-fluid pt-5">
-          <div id="step1" class="card">
+          <div id="step0" class="card pb-5 pt-5">
+            <div class="card-body text-center">
+              <h1 class="text-info">Qual seu nível?</h1>
+              <div class="row text-center" id="levels">
+              </div>
+            </div>
+          </div>
+          <div id="step1" class="card" style="display: none">
             <div class="row card-body">
               <div class="col-lg-6 text-center">
                 <div class="range-slider">
@@ -480,6 +488,13 @@
           >[[name]]
         </span>
       </td>
+    </script>
+    <script type="text/template" id="template_level">
+      <div class="col-lg-12 mt-5">
+        <button onclick="next0([[id]])" class="btn btn-outline-info btn-bg">
+          [[name]]
+        </button>
+      </div>
     </script>
     <script type="text/template" id="template_row">
       <tr id=ts[[id]]>
