@@ -16,6 +16,7 @@ def api_lecture_get():
     response = {"lectures": lectures}
     return jsonify(response)
 
+
 @app.route('/api/lecture', methods=["DELETE"])
 @login_required
 def api_lecture_delete():
