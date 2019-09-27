@@ -77,4 +77,23 @@ function renderStudent(student) {
   $form = $("#studentForm");
   $form.values(student);
   $form.find("textarea").val(student.message);
+  $("#studentPhoto").attr(
+    "src",
+    student.photo
+      ? student.photo
+      : "https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+  );
+  $("#studetName").html(student.name);
+  $("#studentLectures").html(
+    student.classes_per_week > 1
+      ? student.classes_per_week + " Lectures / Week"
+      : student.classes_per_week + " Lecture / Week"
+  );
+  $("#StudentWeeks").html(
+    student.weeks > 1 ? student.weeks + " Weeks" : student.weeks + " Week"
+  );
+  $("#studentCreatedAt").html(
+    "Started at " + moment(student.created_at).format("LL")
+  );
+  $("#studentCard").fadeIn();
 }
