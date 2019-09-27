@@ -6,8 +6,8 @@ var $monthCost = $("#monthCost");
 var $weekCost = $("#weekCost");
 var $lectureCost = $("#lectureCost");
 var $totalCost = $("#totalCost");
-var weeks, lectures, monthCost, weekCost, totalCost, lectureCost;
-
+var weeks, lecturesPerWeek, monthCost, weekCost, totalCost, lectureCost;
+var lectures = [];
 $selectedLectures = $(".lecture-td.active");
 $selectedCount = $(".selectedCount");
 var selectedLectures;
@@ -26,18 +26,19 @@ var student = {
 
 $(function() {
   refresh();
+  loadLectures();
 });
 
 function refresh() {
   weeks = $weekRange.val();
-  lectures = $lectureRange.val();
-  $lectureCount.html(lectures);
+  lecturesPerWeek = $lectureRange.val();
+  $lectureCount.html(lecturesPerWeek);
   $weekCount.html(weeks);
 
-  totalCost = priceWeekBase[weeks] + 20 * (lectures - 3) * weeks;
+  totalCost = priceWeekBase[weeks] + 20 * (lecturesPerWeek - 3) * weeks;
   weekCost = totalCost / weeks;
   monthCost = weeks > 3 ? weekCost * 4 : totalCost;
-  lectureCost = weekCost / lectures;
+  lectureCost = weekCost / lecturesPerWeek;
 
   $weekCost.text(Math.round(weekCost));
   $monthCost.text(Math.round(monthCost));
@@ -46,10 +47,10 @@ function refresh() {
 
   selectedLectures = $(".lecture-td.active").length;
   $selectedCount.text(selectedLectures);
-  if (selectedLectures < lectures) {
+  if (selectedLectures < lecturesPerWeek) {
     $next2.attr("disabled", true);
     $selectedCount.addClass("text-info");
-  } else if (selectedLectures > lectures) {
+  } else if (selectedLectures > lecturesPerWeek) {
     $next2.attr("disabled", true);
     $selectedCount.addClass("text-danger");
   } else {
@@ -105,13 +106,18 @@ var priceWeekBase = {
 function next1() {
   student.monthly_payment = $("#monthCost").html();
   student.weeks = $("#weekCount").html();
-  student.classes_per_week = lectures;
+  student.classes_per_week = lecturesPerWeek;
   $("#step1").fadeOut(function() {
     $("#step2").fadeIn();
   });
 }
 
 function next2() {
+  student.lectures = $(".lecture-td.active")
+    .map(function() {
+      return $(this).data("id");
+    })
+    .get();
   $("#step2").fadeOut(function() {
     $("#step3").fadeIn();
     $("#name").focus();
@@ -153,12 +159,16 @@ function back1() {
   });
 }
 
-$(".lecture-td").on("click", function(lecture) {
-  selectedLectures < lectures
-    ? $(this).toggleClass("active")
-    : $(this).removeClass("active");
+$(".lecture-td").on("click", lectureOnClick);
+
+function lectureOnClick(el) {
+  if (selectedLectures < lecturesPerWeek) {
+    $(el).toggleClass("active");
+  } else {
+    $(el).removeClass("active");
+  }
   refresh();
-});
+}
 
 $(document).ready(function() {
   // Basic
@@ -188,7 +198,8 @@ function uploadFile(event, form) {
 }
 
 function createStudent(student) {
-  var data = student;
+  var data = JSON.parse(JSON.stringify(student));
+  data.lectures = JSON.stringify(data.lectures);
   $.ajax({
     url: apiUrl + "student",
     data: data,
@@ -208,4 +219,83 @@ function createStudent(student) {
       });
     }
   });
+}
+
+function loadLectures() {
+  $.ajax({
+    url: apiUrl + "lecture",
+    method: "GET",
+    success: function(data) {
+      data.lectures.map(function(lecture) {
+        lecture.created_at = moment(lecture.created_at);
+        lecture.start = moment(lecture.start);
+        lecture.end = moment(lecture.end);
+      });
+      lectures = data;
+      renderLectures(data.lectures);
+    }
+  });
+}
+
+function renderLectures(lectures) {
+  $lectureTemplate = $("#template_lecture");
+  $rowTemplate = $("#template_row");
+  var groups = groupLectures(lectures);
+  var emptyLecture = {
+    name: "Vazio",
+    id: null,
+    accent_color: ""
+  };
+  groups.map(function(group) {
+    $rowTemplate.render(group).appendTo("#lectures");
+    var weekDays = [
+      "Monday",
+      "Thuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+    weekDays.map(function(weekDay) {
+      var foundLecture = group.lectures.find(function(lecture) {
+        return lecture.day_of_week == weekDay;
+      });
+      if (foundLecture !== undefined) {
+        $lectureTemplate.render(foundLecture).appendTo("#ts" + group.id);
+      } else {
+        $lectureTemplate.render(emptyLecture).appendTo("#ts" + group.id);
+      }
+    });
+  });
+}
+
+function groupLectures(lectures) {
+  time = lectures
+    .map(function(lecture) {
+      timestamp =
+        lecture.start.format("HH:mm") + " - " + lecture.end.format("HH:mm");
+      return timestamp;
+    })
+    .filter(function(value, index, self) {
+      return self.indexOf(value) === index;
+    });
+  var groups = [];
+  lectures.map(function(lecture) {
+    var timestamp =
+      lecture.start.format("HH:mm") + " - " + lecture.end.format("HH:mm");
+    var foundGroup = groups.find(function(group) {
+      return group.timestamp == timestamp;
+    });
+    if (foundGroup !== undefined) {
+      foundGroup.lectures.push(lecture);
+    } else {
+      groups.push({
+        timestamp: timestamp,
+        lectures: [lecture],
+        id: groups.length
+      });
+    }
+  });
+  return groups;
 }
