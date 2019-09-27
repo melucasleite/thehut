@@ -84,5 +84,6 @@ def settings_level():
 
 
 @app.route("/student-signin")
+@login_required
 def student_signin():
     return render_template("student-signin.html")
