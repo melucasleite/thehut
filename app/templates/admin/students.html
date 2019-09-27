@@ -11,7 +11,6 @@
   </div>
 </div>
 <div class="row">
-  <!-- Column -->
   <div class="col-12">
     <div class="card">
       <div class="card-body">
@@ -21,13 +20,14 @@
             <select class="custom-select"> </select>
           </div>
         </div>
-        <select id="select2" style="width: 100%"> </select>
+        <select id="select2" style="width: 100%">
+          <option disabled selected></option>
+        </select>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <!-- Column -->
   <div class="col-lg-3 col-xlg-3 col-md-5">
     <div class="card">
       <div class="card-body">
@@ -144,8 +144,6 @@
       </div>
     </div>
   </div>
-  <!-- Column -->
-  <!-- Column -->
   <div class="col-lg-9 col-xlg-9 col-md-7">
     <div class="card">
       <!-- Nav tabs -->
@@ -368,13 +366,18 @@
         </div>
         <div class="tab-pane active" id="settings" role="tabpanel">
           <div class="card-body">
-            <form class="form-horizontal form-material">
+            <form
+              id="studentForm"
+              class="form-horizontal form-material"
+              onsubmit="updateStudent(event, this)"
+            >
+              <input type="hidden" name="id" />
               <div class="form-group">
                 <label class="col-md-12">Name</label>
                 <div class="col-md-12">
                   <input
                     type="text"
-                    placeholder="Johnathan Doe"
+                    name="name"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -384,10 +387,8 @@
                 <div class="col-md-12">
                   <input
                     type="email"
-                    placeholder="johnathan@admin.com"
+                    name="email"
                     class="form-control form-control-line"
-                    name="example-email"
-                    id="example-email"
                   />
                 </div>
               </div>
@@ -396,7 +397,7 @@
                 <div class="col-md-12">
                   <input
                     type="text"
-                    placeholder="(71) 99126-2602"
+                    name="cellphone"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -406,7 +407,7 @@
                 <div class="col-md-12">
                   <input
                     type="number"
-                    placeholder="3"
+                    name="classes_per_week"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -416,7 +417,7 @@
                 <div class="col-md-12">
                   <input
                     type="number"
-                    placeholder="3"
+                    name="weeks"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -425,8 +426,10 @@
                 <label class="col-md-12">Monthly Payment</label>
                 <div class="col-md-12">
                   <input
-                    type="text"
-                    placeholder="R$ 150"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    name="monthly_payment"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -435,14 +438,18 @@
                 <label class="col-md-12">Message</label>
                 <div class="col-md-12">
                   <textarea
+                    id="studentMessage"
                     rows="5"
+                    name="message"
                     class="form-control form-control-line"
                   ></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
-                  <button class="btn btn-info">Update Profile</button>
+                  <button type="submit" class="btn btn-info">
+                    Update Profile
+                  </button>
                 </div>
               </div>
             </form>
@@ -451,7 +458,6 @@
       </div>
     </div>
   </div>
-  <!-- Column -->
 </div>
 {% endblock %} {% block scripts %}
 <style>
@@ -459,14 +465,5 @@
     width: 100% !important;
   }
 </style>
-<script>
-  $(function() {
-    $(".select2").select2();
-    $("#select2").select2();
-    $("#select2")
-      .append(new Option("Lucas Leite (me@lucasleite.us)", 0, false, false))
-      .append(new Option("Uriel Habes (me@lucasleite.us)", 0, false, false))
-      .trigger("change");
-  });
-</script>
+<script src="/static/app/views/admin/settings/students.js"></script>
 {% endblock %}

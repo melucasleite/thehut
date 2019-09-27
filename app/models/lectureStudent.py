@@ -17,3 +17,15 @@ class LectureStudent(db.Model):
         self.lecture_id = lecture_id
         self.created_at = datetime.now()
         self.deleted = False
+
+    def to_dict(self):
+        return {
+            "name": self.lecture.name,
+            "accent_color": self.lecture.accent_color,
+            "day_of_week": self.lecture.day_of_week,
+            "start": self.lecture.start.isoformat(),
+            "end": self.lecture.end.isoformat(),
+            "student_capacity": self.lecture.student_capacity,
+            "student_id": self.student_id,
+            "lecture_id": self.lecture_id,
+        }
