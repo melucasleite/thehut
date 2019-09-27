@@ -97,6 +97,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      .page-wrapper {
+        margin-left: 0px;
+      }
+    </style>
   </head>
 
   <body class="fix-header fix-sidebar logo-center card-no-border">
@@ -158,95 +163,13 @@
           </div>
         </nav>
       </header>
-      <aside class="left-sidebar">
-        <div class="scroll-sidebar">
-          <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-              <li>
-                <a class="waves-effect waves-dark" href="#">
-                  1.
-                  <span class="hide-menu">Lecture Plan</span>
-                  <i class="fa fa-check"></i>
-                </a>
-              </li>
-
-              <li class="hide-menu">
-                <div class="card">
-                  <div class="card-body p-2">
-                    <ul class="mt-0 pt-0">
-                      <span class="badge badge-outline-inverse">
-                        3 Aulas por semana </span
-                      ><span class="badge badge-outline-inverse">
-                        Curso de 14 Semanas
-                      </span>
-                      <span class="badge badge-outline-inverse">
-                        R$ 200 por mes
-                      </span>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li class="text-info">
-                <a class="waves-effect waves-dark" href="#">
-                  2.
-                  <span class="hide-menu">Schedule</span>
-                  <i class="fa fa-check"></i>
-                </a>
-              </li>
-              <li class="hide-menu">
-                <div class="card">
-                  <div class="card-body p-2">
-                    <ul class="mt-0 pt-0">
-                      <li>
-                        <span class="badge badge-outline-inverse">
-                          Intermediate - QUA 08:20
-                        </span>
-                      </li>
-                      <li>
-                        <span class="badge badge-outline-inverse">
-                          Intermediate - QUA 08:20
-                        </span>
-                      </li>
-                      <li>
-                        <span class="badge badge-outline-inverse">
-                          Intermediate - QUA 08:20
-                        </span>
-                      </li>
-                      <li>
-                        <span class="badge badge-outline-inverse">
-                          Intermediate - QUA 08:20
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a class="waves-effect waves-dark" href="#">
-                  3.
-                  <span class="hide-menu">Register</span>
-                  <i class="fa fa-check"></i>
-                </a>
-              </li>
-              <li>
-                <a class="waves-effect waves-dark" href="#">
-                  4.
-                  <span class="hide-menu">Selfie</span>
-                  <i class="fa fa-check"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </aside>
 
       <div class="page-wrapper">
         <div class="container-fluid pt-5">
           <div id="step0" class="card pb-5 pt-5">
             <div class="card-body text-center">
               <h1 class="text-info">Qual seu nível?</h1>
-              <div class="row text-center" id="levels">
-              </div>
+              <div class="row text-center" id="levels"></div>
             </div>
           </div>
           <div id="step1" class="card" style="display: none">
