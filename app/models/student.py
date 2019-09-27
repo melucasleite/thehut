@@ -13,13 +13,13 @@ class Student(db.Model):
     # billing
     classes_per_week = db.Column(db.Integer)
     weeks = db.Column(db.Integer)
-    level = db.Column(db.String(180))
     monthly_payment = db.Column(db.Integer)
     message = db.Column(db.String(6000))
     # management
     deleted = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime)
     # relationships
+    level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     lectures = db.relationship(
         'LectureStudent', backref='student', lazy='dynamic')
     skills = db.relationship('SkillStudent', backref='student', lazy='dynamic')

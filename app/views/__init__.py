@@ -77,6 +77,12 @@ def settings_teachers():
     return render_template("admin/settings/teachers.html")
 
 
+@app.route("/settings/level")
+@admin_permission.require(http_exception=403)
+def settings_level():
+    return render_template("admin/settings/level.html")
+
+
 @app.route("/student-signin")
 def student_signin():
     return render_template("student-signin.html")
