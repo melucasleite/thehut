@@ -49,7 +49,6 @@ def api_students_get():
 @app.route('/api/student', methods=["GET"])
 @login_required
 def api_student_get():
-    print request.args
     student = Student.query.get(request.args.get("id"))
     if not student:
         raise Exception("Student not found.")
@@ -85,3 +84,26 @@ def api_student_update():
     student.cellphone = cellphone
     db.session.commit()
     return jsonify({"message": "Student updated."}), 200
+
+
+@app.route('/api/student/lecture', methods=["DELETE"])
+@login_required
+def api_student_lecture():
+    args = request.form
+    student_id = args["student_id"]
+    lecture_id = args["lecture_id"]
+    student = Student.query.get(student_id)
+    if not student:
+        raise Exception("Student not found.")
+    lecture = Lecture.query.get(lecture_id)
+    if not lecture:
+        raise Exception("Lecture not found.")
+    lecture_student = LectureStudent.query\
+        .filter_by(student_id=student.id)\
+        .filter_by(lecture_id=lecture.id)\
+        .first()
+    if not lecture_student:
+        raise Exception("Student not in lecture.")
+    db.session.delete(lecture_student)
+    db.session.commit()
+    return jsonify({"message": "Student removed from lecture."}), 200

@@ -171,7 +171,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link active"
+            class="nav-link"
             data-toggle="tab"
             href="#settings"
             role="tab"
@@ -185,58 +185,9 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12 mb-3">
-                <p>Lecture #1</p>
-                <select class="form-control select2">
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
+                <h6>3 Lectures selected of 3 Lectures per Week.</h3>
+                  <div id="lectures"></div>
               </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #2</p>
-                <select class="form-control select2">
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #3</p>
-                <select class="form-control select2">
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #4</p>
-
-                <select class="form-control select2">
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #5</p>
-                <select class="form-control select2">
-                  <option selected>Unassigned</option>
-                  <option value="">Saturday 9:30AM - (5/10)</option>
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <button class="btn btn-info">Update</button>
             </div>
           </div>
         </div>
@@ -362,7 +313,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane active" id="settings" role="tabpanel">
+        <div class="tab-pane" id="settings" role="tabpanel">
           <div class="card-body">
             <form
               id="studentForm"
@@ -464,5 +415,8 @@
     width: 100% !important;
   }
 </style>
+<script type="text/template" id="lecture_template">
+  <button onclick="deleteLecture([[lecture_id]])" class="btn btn-outline-[[accent_color]] mr-2">[[name]]<br>[[day_of_week]]<br>[[timestamp]]</button>
+</script>
 <script src="/static/app/views/admin/settings/students.js"></script>
 {% endblock %}

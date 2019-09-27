@@ -1,6 +1,8 @@
 var students, student;
 $(document).ready(function() {
   var student_id = localStorage.getItem("student_id");
+  var active_tab = localStorage.getItem("students_active_tab");
+  active_tab ? $(active_tab).tab("show") : $("#settings").tab("show");
   getstudents(function() {
     getStudent(student_id ? student_id : students[0].id);
     students.map(function(student) {
@@ -57,6 +59,7 @@ function getStudent(id) {
 function updateStudent(event, form) {
   event.preventDefault();
   var data = $(form).serializeArray();
+  localStorage.setItem("students_active_tab", "#settings");
   $.ajax({
     url: apiUrl + "student",
     method: "PUT",
@@ -96,4 +99,36 @@ function renderStudent(student) {
     "Started at " + moment(student.created_at).format("LL")
   );
   $("#studentCard").fadeIn();
+  $lectureTemplate = $("#lecture_template");
+  $("#lectures").html("");
+  student.lectures.map(function(lecture) {
+    lecture.timestamp =
+      moment(lecture.start).format("HH:mm") +
+      " - " +
+      moment(lecture.end).format("HH:mm");
+  });
+  $lectureTemplate.render(student.lectures).appendTo("#lectures");
+}
+
+function deleteLecture(lecture_id) {
+  localStorage.setItem("students_active_tab", "#home");
+  defaultConfirm(function() {
+    $.ajax({
+      url: apiUrl + "student/lecture",
+      data: { student_id: student.id, lecture_id: lecture_id },
+      method: "DELETE",
+      beforeSend: function() {
+        preloaderShow();
+      },
+      complete: function() {
+        preloaderHide();
+      },
+      error: errorHandler,
+      success: function(response) {
+        defaultSuccess(response, function() {
+          window.location = "/students";
+        });
+      }
+    });
+  });
 }
