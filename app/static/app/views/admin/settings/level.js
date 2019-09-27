@@ -41,7 +41,6 @@ function getLevels() {
     },
     error: errorHandler,
     success: function(data) {
-      console.log(data);
       levels = data.levels;
       renderLevels(levels);
     }
