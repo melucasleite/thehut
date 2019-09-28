@@ -42,6 +42,7 @@ class Lecture(db.Model):
             "day_of_week": self.day_of_week,
             "start": self.start.isoformat(),
             "end": self.end.isoformat(),
+            "students": len(self.students.all()),
             "student_capacity": self.student_capacity,
             "name": self.name,
             "accent_color": self.accent_color,
