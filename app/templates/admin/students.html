@@ -11,7 +11,6 @@
   </div>
 </div>
 <div class="row">
-  <!-- Column -->
   <div class="col-12">
     <div class="card">
       <div class="card-body">
@@ -21,26 +20,25 @@
             <select class="custom-select"> </select>
           </div>
         </div>
-        <select id="select2" style="width: 100%"> </select>
+        <select id="select2" style="width: 100%">
+          <option disabled selected></option>
+        </select>
       </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <!-- Column -->
+<div class="row" style="display: None" id="studentCard">
   <div class="col-lg-3 col-xlg-3 col-md-5">
     <div class="card">
       <div class="card-body">
         <div class="text-center">
-          <img
-            src="/static/assets/images/users/1.jpg"
-            class="img-circle"
-            width="150"
-          />
-          <h4 class="card-title m-t-10">Lucas Leite</h4>
-          <h6 class="card-subtitle">3 Classes / week</h6>
-          <h6 class="card-subtitle">14 Weeks program</h6>
-          <h6 class="card-subtitle">Started at April, 5th</h6>
+          <img id="studentPhoto" class="img-circle" width="150" />
+          <h4 id="studetName" class="card-title m-t-10"></h4>
+          <h6 id="studentLectures" class="card-subtitle">3 Classes / week</h6>
+          <h6 id="StudentWeeks" class="card-subtitle">14 Weeks program</h6>
+          <h6 id="studentCreatedAt" class="card-subtitle">
+            Started at April, 5th
+          </h6>
         </div>
       </div>
       <div>
@@ -144,8 +142,6 @@
       </div>
     </div>
   </div>
-  <!-- Column -->
-  <!-- Column -->
   <div class="col-lg-9 col-xlg-9 col-md-7">
     <div class="card">
       <!-- Nav tabs -->
@@ -175,7 +171,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link active"
+            class="nav-link"
             data-toggle="tab"
             href="#settings"
             role="tab"
@@ -189,58 +185,9 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12 mb-3">
-                <p>Lecture #1</p>
-                <select class="form-control select2">
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
+                <h6>3 Lectures selected of 3 Lectures per Week.</h3>
+                  <div id="lectures"></div>
               </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #2</p>
-                <select class="form-control select2">
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #3</p>
-                <select class="form-control select2">
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #4</p>
-
-                <select class="form-control select2">
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-              <div class="col-12 mb-3">
-                <p>Lecture #5</p>
-                <select class="form-control select2">
-                  <option selected>Unassigned</option>
-                  <option value="">Saturday 9:30AM - (5/10)</option>
-                  <option value="">Friday 9:30AM - (5/10)</option>
-                  <option value="">Wednessday 9:30AM - (5/10)</option>
-                  <option value="">Thursday 9:30AM - (5/10)</option>
-                  <option value="">Monday 9:30AM - (5/10)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <button class="btn btn-info">Update</button>
             </div>
           </div>
         </div>
@@ -366,15 +313,20 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane active" id="settings" role="tabpanel">
+        <div class="tab-pane" id="settings" role="tabpanel">
           <div class="card-body">
-            <form class="form-horizontal form-material">
+            <form
+              id="studentForm"
+              class="form-horizontal form-material"
+              onsubmit="updateStudent(event, this)"
+            >
+              <input type="hidden" name="id" />
               <div class="form-group">
                 <label class="col-md-12">Name</label>
                 <div class="col-md-12">
                   <input
                     type="text"
-                    placeholder="Johnathan Doe"
+                    name="name"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -384,10 +336,8 @@
                 <div class="col-md-12">
                   <input
                     type="email"
-                    placeholder="johnathan@admin.com"
+                    name="email"
                     class="form-control form-control-line"
-                    name="example-email"
-                    id="example-email"
                   />
                 </div>
               </div>
@@ -396,17 +346,18 @@
                 <div class="col-md-12">
                   <input
                     type="text"
-                    placeholder="(71) 99126-2602"
+                    name="cellphone"
                     class="form-control form-control-line"
                   />
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-12">Classes per week</label>
+                <label class="col-md-12">Lectures per week</label>
                 <div class="col-md-12">
                   <input
                     type="number"
-                    placeholder="3"
+                    min="0"
+                    name="classes_per_week"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -416,7 +367,7 @@
                 <div class="col-md-12">
                   <input
                     type="number"
-                    placeholder="3"
+                    name="weeks"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -425,8 +376,10 @@
                 <label class="col-md-12">Monthly Payment</label>
                 <div class="col-md-12">
                   <input
-                    type="text"
-                    placeholder="R$ 150"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    name="monthly_payment"
                     class="form-control form-control-line"
                   />
                 </div>
@@ -435,14 +388,18 @@
                 <label class="col-md-12">Message</label>
                 <div class="col-md-12">
                   <textarea
+                    id="studentMessage"
                     rows="5"
+                    name="message"
                     class="form-control form-control-line"
                   ></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
-                  <button class="btn btn-info">Update Profile</button>
+                  <button type="submit" class="btn btn-info">
+                    Update Profile
+                  </button>
                 </div>
               </div>
             </form>
@@ -451,7 +408,6 @@
       </div>
     </div>
   </div>
-  <!-- Column -->
 </div>
 {% endblock %} {% block scripts %}
 <style>
@@ -459,14 +415,8 @@
     width: 100% !important;
   }
 </style>
-<script>
-  $(function() {
-    $(".select2").select2();
-    $("#select2").select2();
-    $("#select2")
-      .append(new Option("Lucas Leite (me@lucasleite.us)", 0, false, false))
-      .append(new Option("Uriel Habes (me@lucasleite.us)", 0, false, false))
-      .trigger("change");
-  });
+<script type="text/template" id="lecture_template">
+  <button onclick="deleteLecture([[lecture_id]])" class="btn btn-outline-[[accent_color]] mr-2">[[name]]<br>[[day_of_week]]<br>[[timestamp]]</button>
 </script>
+<script src="/static/app/views/admin/settings/students.js"></script>
 {% endblock %}

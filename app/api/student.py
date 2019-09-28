@@ -35,3 +35,75 @@ def api_student_post():
         db.session.commit()
     response = {"message": "Student Created."}
     return jsonify(response)
+
+
+@app.route('/api/students', methods=["GET"])
+@login_required
+def api_students_get():
+    students = Student.query.all()
+    students = map(lambda x: x.to_dict(), students)
+    response = {"students": students}
+    return jsonify(response)
+
+
+@app.route('/api/student', methods=["GET"])
+@login_required
+def api_student_get():
+    student = Student.query.get(request.args.get("id"))
+    if not student:
+        raise Exception("Student not found.")
+    response = {"student": student.to_dict_full()}
+    return jsonify(response)
+
+
+@app.route('/api/student', methods=["PUT"])
+@login_required
+def api_student_update():
+    args = request.form
+    id = args["id"]
+    name = args["name"].strip()
+    email = args["email"].strip()
+    cellphone = args["cellphone"].strip()
+    classes_per_week = args["classes_per_week"].strip()
+    weeks = args["weeks"].strip()
+    monthly_payment = args["monthly_payment"].strip()
+    message = args["message"].strip()
+    cellphone = ''.join(filter(lambda x: x.isdigit(), cellphone))
+    student = Student.query.get(id)
+    if not student:
+        raise Exception("Student not found.")
+    if not(name and email):
+        raise Exception("Missing fields.")
+    student.name = name
+    student.email = email
+    student.cellphone = cellphone
+    student.classes_per_week = classes_per_week
+    student.weeks = weeks
+    student.monthly_payment = monthly_payment
+    student.message = message
+    student.cellphone = cellphone
+    db.session.commit()
+    return jsonify({"message": "Student updated."}), 200
+
+
+@app.route('/api/student/lecture', methods=["DELETE"])
+@login_required
+def api_student_lecture():
+    args = request.form
+    student_id = args["student_id"]
+    lecture_id = args["lecture_id"]
+    student = Student.query.get(student_id)
+    if not student:
+        raise Exception("Student not found.")
+    lecture = Lecture.query.get(lecture_id)
+    if not lecture:
+        raise Exception("Lecture not found.")
+    lecture_student = LectureStudent.query\
+        .filter_by(student_id=student.id)\
+        .filter_by(lecture_id=lecture.id)\
+        .first()
+    if not lecture_student:
+        raise Exception("Student not in lecture.")
+    db.session.delete(lecture_student)
+    db.session.commit()
+    return jsonify({"message": "Student removed from lecture."}), 200

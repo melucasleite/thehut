@@ -7,7 +7,8 @@ var $weekCost = $("#weekCost");
 var $lectureCost = $("#lectureCost");
 var $totalCost = $("#totalCost");
 var weeks, lecturesPerWeek, monthCost, weekCost, totalCost, lectureCost;
-var lectures = [];
+var lectures = [],
+  levels = [];
 $selectedLectures = $(".lecture-td.active");
 $selectedCount = $(".selectedCount");
 var selectedLectures;
@@ -27,6 +28,7 @@ var student = {
 $(function() {
   refresh();
   loadLectures();
+  loadLevels();
 });
 
 function refresh() {
@@ -34,10 +36,16 @@ function refresh() {
   lecturesPerWeek = $lectureRange.val();
   $lectureCount.html(lecturesPerWeek);
   $weekCount.html(weeks);
-
-  totalCost = priceWeekBase[weeks] + 20 * (lecturesPerWeek - 3) * weeks;
+  var costBase = priceWeekBase.intermediate;
+  var plan = levels.find(function(level) {
+    return level.id == student.level;
+  });
+  if (plan !== undefined) {
+    costBase = priceWeekBase[plan.name.toLowerCase()];
+  }
+  totalCost = costBase[weeks] + 20 * (lecturesPerWeek - 3) * weeks;
   weekCost = totalCost / weeks;
-  monthCost = weeks > 3 ? weekCost * 4 : totalCost;
+  monthCost = weeks > 3 ? weekCost * 4.43 : totalCost;
   lectureCost = weekCost / lecturesPerWeek;
 
   $weekCost.text(Math.round(weekCost));
@@ -69,30 +77,90 @@ $weekRange.on("input", function() {
 });
 
 var priceWeekBase = {
-  "1": 90,
-  "2": 175,
-  "3": 260,
-  "4": 340,
-  "5": 420,
-  "6": 495,
-  "7": 565,
-  "8": 640,
-  "9": 710,
-  "10": 775,
-  "11": 840,
-  "12": 905,
-  "13": 965,
-  "14": 1025,
-  "15": 1085,
-  "16": 1140,
-  "17": 1190,
-  "18": 1245,
-  "19": 1300,
-  "20": 1345,
-  "21": 1390,
-  "22": 1435,
-  "23": 1480,
-  "24": 1525
+  advanced: {
+    "1": 73,
+    "2": 144,
+    "3": 213,
+    "4": 280,
+    "5": 345,
+    "6": 408,
+    "7": 469,
+    "8": 528,
+    "9": 586,
+    "10": 642,
+    "11": 696,
+    "12": 749,
+    "13": 800,
+    "14": 849,
+    "15": 897,
+    "16": 943,
+    "17": 987,
+    "18": 1031,
+    "19": 1073,
+    "20": 1113,
+    "21": 1152,
+    "22": 1190,
+    "23": 1226,
+    "24": 1261,
+    "25": 1295,
+    "26": 1328
+  },
+  intermediate: {
+    "1": 66,
+    "2": 130,
+    "3": 192,
+    "4": 253,
+    "5": 312,
+    "6": 369,
+    "7": 424,
+    "8": 478,
+    "9": 530,
+    "10": 580,
+    "11": 629,
+    "12": 677,
+    "13": 723,
+    "14": 767,
+    "15": 811,
+    "16": 852,
+    "17": 893,
+    "18": 932,
+    "19": 970,
+    "20": 1006,
+    "21": 1042,
+    "22": 1076,
+    "23": 1109,
+    "24": 1140,
+    "25": 1171,
+    "26": 1201
+  },
+  fundamentals: {
+    "1": 60,
+    "2": 118,
+    "3": 175,
+    "4": 230,
+    "5": 283,
+    "6": 335,
+    "7": 386,
+    "8": 434,
+    "9": 482,
+    "10": 528,
+    "11": 572,
+    "12": 615,
+    "13": 657,
+    "14": 698,
+    "15": 737,
+    "16": 775,
+    "17": 812,
+    "18": 847,
+    "19": 882,
+    "20": 915,
+    "21": 947,
+    "22": 978,
+    "23": 1008,
+    "24": 1037,
+    "25": 1065,
+    "26": 1092
+  }
 };
 
 // $("#step1").hide();
@@ -102,6 +170,14 @@ var priceWeekBase = {
 // $("#step5").hide();
 // $("#step6").hide();
 // $("#step8").hide();
+
+function next0(id) {
+  student.level = id;
+  refresh();
+  $("#step0").fadeOut(function() {
+    $("#step1").fadeIn();
+  });
+}
 
 function next1() {
   student.monthly_payment = $("#monthCost").html();
@@ -272,6 +348,7 @@ function renderLectures(lectures) {
 
 function groupLectures(lectures) {
   time = lectures
+    .sort((a, b) => a.start.valueOf() - b.start.valueOf())
     .map(function(lecture) {
       timestamp =
         lecture.start.format("HH:mm") + " - " + lecture.end.format("HH:mm");
@@ -298,4 +375,20 @@ function groupLectures(lectures) {
     }
   });
   return groups;
+}
+
+function loadLevels() {
+  $.ajax({
+    url: apiUrl + "level",
+    method: "GET",
+    success: function(data) {
+      levels = data.levels;
+      renderLevels(data.levels);
+    }
+  });
+}
+
+function renderLevels(levels) {
+  $template = $("#template_level");
+  $template.render(levels).appendTo("#levels");
 }
