@@ -1,6 +1,18 @@
-var lectures;
+var lectures, students, student_id;
 $(document).ready(function() {
   loadLectures();
+  loadStudents(function() {
+    students.map(function(student) {
+      student.text = "{0} ({1})".format(student.name, student.email);
+    });
+    $("#selectStudents")
+      .select2({
+        data: students
+      })
+      .on("select2:select", function(event) {
+        student_id = event.params.data.id;
+      });
+  });
 });
 
 function loadLectures() {
@@ -17,6 +29,22 @@ function loadLectures() {
       });
       lectures = data;
       renderLectures(data.lectures);
+    }
+  });
+}
+
+function loadStudents(callback) {
+  $.ajax({
+    url: apiUrl + "students",
+    method: "GET",
+    beforeSend: preloaderShow,
+    complete: preloaderHide,
+    success: function(data) {
+      data.students.map(function(student) {
+        student.created_at = moment(student.created_at);
+      });
+      students = data.students;
+      callback();
     }
   });
 }
@@ -86,6 +114,78 @@ function groupLectures(lectures) {
   return groups;
 }
 
-function lectureOnClick() {
-  $("#modalLectureStudents").modal("toggle");
+function lectureOnClick(id) {
+  loadLecture(id, function() {
+    lecture.timestamp =
+      moment(lecture.start).format("HH:mm") +
+      " - " +
+      moment(lecture.end).format("HH:mm");
+    lecture.capacity_str =
+      lecture.students.length + "/" + lecture.student_capacity;
+    $("#lectureName").html(lecture.name);
+    $("#lectureTimestamp").html(lecture.timestamp);
+    $("#lectureCapacityStr").html(lecture.capacity_str);
+    $template = $("#template_student");
+    $("#students").html("");
+    lecture.students.map(function(student) {
+      student.student_initials = student.student_name[0];
+    });
+    $template.render(lecture.students).appendTo("#students");
+    $("#modalLectureStudents").modal("show");
+  });
+}
+
+var lecture;
+function loadLecture(id, callback) {
+  $.ajax({
+    url: apiUrl + "lecture",
+    method: "GET",
+    data: { lecture_id: id },
+    beforeSend: preloaderShow,
+    complete: preloaderHide,
+    success: function(data) {
+      lecture = data.lecture;
+      callback();
+    }
+  });
+}
+
+function deleteStudent(student_id) {
+  defaultConfirm(function() {
+    $.ajax({
+      url: apiUrl + "student/lecture",
+      data: { student_id: student_id, lecture_id: lecture.id },
+      method: "DELETE",
+      beforeSend: function() {
+        preloaderShow();
+      },
+      complete: function() {
+        preloaderHide();
+      },
+      error: errorHandler,
+      success: function(response) {
+        lectureOnClick(lecture.id);
+        loadLectures();
+      }
+    });
+  });
+}
+
+function addStudent() {
+  $.ajax({
+    url: apiUrl + "student/lecture",
+    data: { student_id: student_id, lecture_id: lecture.id },
+    method: "POST",
+    beforeSend: function() {
+      preloaderShow();
+    },
+    complete: function() {
+      preloaderHide();
+    },
+    error: errorHandler,
+    success: function(response) {
+      lectureOnClick(lecture.id);
+      loadLectures();
+    }
+  });
 }

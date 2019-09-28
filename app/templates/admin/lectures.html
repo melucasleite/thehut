@@ -47,83 +47,55 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-lg-6">
-            <h6>Intermediate</h6>
-            <h6>08h20 - 10h30</h6>
+            <h6 id="lectureName"></h6>
+            <h6 id="lectureTimestamp"></h6>
           </div>
-
           <div class="col-lg-6 text-right">
-            <h3>5/10 <i class="ti-user"></i></h3>
+            <h3>
+              <span id="lectureCapacityStr"></span> <i class="ti-user"></i>
+            </h3>
           </div>
         </div>
       </div>
       <div class="modal-body">
         <!-- Skill Name -->
         <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td style="width:50px;">
-                <span class="round bg-inverse">LL</span>
-              </td>
-              <td>
-                <h6>Lucas Leite</h6>
-                <small class="text-muted">(71) 99126-2602</small>
-              </td>
-              <td class="text-right" width="50px">
-                <button class="btn btn-waves btn-danger">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td style="width:50px;">
-                <span class="round bg-inverse">LL</span>
-              </td>
-              <td>
-                <h6>Lucas Leite</h6>
-                <small class="text-muted">(71) 99126-2602</small>
-              </td>
-              <td class="text-right" width="50px">
-                <button class="btn btn-waves btn-danger">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td style="width:50px;">
-                <span class="round bg-inverse">LL</span>
-              </td>
-              <td>
-                <h6>Lucas Leite</h6>
-                <small class="text-muted">(71) 99126-2602</small>
-              </td>
-              <td class="text-right" width="50px">
-                <button class="btn btn-waves btn-danger">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <select type="text" class="form-control select2">
-                  <option value="">Lucas Leite</option>
-                </select>
-              </td>
-              <td class="text-right" width="50px">
-                <button class="btn btn-waves btn-info">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="students"></tbody>
         </table>
+        <hr />
+        <h6>Add Student</h6>
+        <select id="selectStudents">
+          <option disabled selected></option>
+        </select>
+        <div class="form-group pt-2">
+          <button onclick="addStudent()" class="btn btn-info">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 {% endblock %} {% block scripts %}
+<script type="text/template" id="template_student">
+  <tr>
+      <td style="width:50px;">
+        <span class="round bg-inverse">[[student_initials]]</span>
+      </td>
+      <td>
+        <h6>[[student_name]]</h6>
+        <small class="text-muted">[[student_cellphone]]</small>
+      </td>
+      <td class="text-right" width="50px">
+        <button class="btn btn-waves btn-danger" onclick="deleteStudent([[student_id]])">
+          <i class="fa fa-times"></i>
+        </button>
+      </td>
+    </tr>
+</script>
 <script type="text/template" id="template_lecture">
-  <td class="lecture-td pt-3 pb-3" data-id="[[id]]" onclick="lectureOnClick(this)">
+  <td class="lecture-td pt-3 pb-3" data-id="[[id]]" onclick="lectureOnClick([[id]])">
     <span class="badge badge-[[accent_color]] label-md">[[name]] [[students]]/[[student_capacity]]
     <i class="far fa-user"></i></span>
   </td>
@@ -142,10 +114,5 @@
     </td>
   </tr>
 </script>
-<script src="/static/app/views/admin/lectures.js"></script>
-<script>
-  $(".select2").select2({ placeholder: "Add Student", allowClear: true });
-  $(".lecture-td").on("click", function() {});
-</script>
-
+<script src="/static/app/views/admin/lectures.js?v2"></script>
 {% endblock %}

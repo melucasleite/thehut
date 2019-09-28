@@ -11,6 +11,12 @@ from datetime import datetime
 @app.route('/api/lecture', methods=["GET"])
 @login_required
 def api_lecture_get():
+    lecture_id = request.args.get("lecture_id")
+    if lecture_id:
+        lecture = Lecture.query.get(lecture_id)
+        if not lecture:
+            raise Exception("Lecture not found.")
+        return jsonify({"lecture": lecture.to_dict_full()})
     lectures = Lecture.query.filter_by(deleted=False).all()
     lectures = map(lambda x: x.to_dict(), lectures)
     response = {"lectures": lectures}

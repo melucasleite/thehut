@@ -48,3 +48,15 @@ class Lecture(db.Model):
             "accent_color": self.accent_color,
             "created_at": self.created_at.isoformat(),
         }
+
+    def to_dict_full(self):
+        return {
+            "id": self.id,
+            "day_of_week": self.day_of_week,
+            "start": self.start.isoformat(),
+            "end": self.end.isoformat(),
+            "students": map(lambda student: student.to_dict(), self.students.all()),            "student_capacity": self.student_capacity,
+            "name": self.name,
+            "accent_color": self.accent_color,
+            "created_at": self.created_at.isoformat(),
+        }

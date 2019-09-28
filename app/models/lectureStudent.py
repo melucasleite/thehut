@@ -27,5 +27,8 @@ class LectureStudent(db.Model):
             "end": self.lecture.end.isoformat(),
             "student_capacity": self.lecture.student_capacity,
             "student_id": self.student_id,
+            "student_name": self.student.name,
+            "student_cellphone": self.student.cellphone,
+            "student_photo": self.student.photo,
             "lecture_id": self.lecture_id,
         }
