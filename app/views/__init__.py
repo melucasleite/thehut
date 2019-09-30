@@ -65,10 +65,10 @@ def settings_password():
     return render_template("admin/settings/password.html")
 
 
-@app.route("/settings/student-evaluation")
+@app.route("/settings/skills_and_remarks")
 @admin_permission.require(http_exception=403)
-def settings_student_evaluation():
-    return render_template("admin/settings/student-evaluation.html")
+def settings_skills_and_remarks():
+    return render_template("admin/settings/skills_and_remarks.html")
 
 
 @app.route("/settings/teachers")

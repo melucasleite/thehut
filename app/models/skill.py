@@ -17,3 +17,9 @@ class Skill(db.Model):
         self.name = name
         self.deleted = False
         self.created_at = datetime.now()
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
