@@ -7,6 +7,6 @@ from app.models.remarkStudent import RemarkStudent
 from app.models.skill import Skill
 from app.models.skillStudent import SkillStudent
 from app.models.student import Student
-from app.models.studentLectureHistory import StudentLectureHistory
 from app.models.studentPaymentHistory import StudentPaymentHistory
 from app.models.level import Level
+from app.models.lectureHistoryStudent import LectureHistoryStudent

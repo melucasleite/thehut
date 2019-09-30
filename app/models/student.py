@@ -26,7 +26,7 @@ class Student(db.Model):
     remarks = db.relationship(
         'RemarkStudent', backref='student', lazy='dynamic')
     lecture_history = db.relationship(
-        'StudentLectureHistory', backref='student', lazy='dynamic')
+        'LectureHistoryStudent', backref='student', lazy='dynamic')
     payment_history = db.relationship(
         'StudentPaymentHistory', backref='student', lazy='dynamic')
 

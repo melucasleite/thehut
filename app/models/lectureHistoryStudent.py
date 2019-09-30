@@ -4,13 +4,14 @@ from datetime import datetime, timedelta
 from app import db
 
 
-class StudentLectureHistory(db.Model):
+class LectureHistoryStudent(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
     date = db.Column(db.DateTime)
+    present = db.Column(db.Boolean)
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
-    skills = db.relationship('SkillStudent', backref='student_lecture_history', lazy='dynamic')
-    remarks = db.relationship('RemarkStudent', backref='student_lecture_history', lazy='dynamic')
+    skills = db.relationship('SkillStudent', backref='lecture_history', lazy='dynamic')
+    remarks = db.relationship('RemarkStudent', backref='lecture_history', lazy='dynamic')
     # control
     created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)

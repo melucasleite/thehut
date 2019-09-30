@@ -21,7 +21,7 @@ class Lecture(db.Model):
     remarks = db.relationship(
         'RemarkStudent', backref='lecture', lazy='dynamic')
     lecture_history = db.relationship(
-        'StudentLectureHistory', backref='lecture', lazy='dynamic')
+        'LectureHistoryStudent', backref='lecture', lazy='dynamic')
     # control
     created_at = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean, default=False)
