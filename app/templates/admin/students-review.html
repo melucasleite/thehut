@@ -37,45 +37,10 @@
               <tr>
                 <th>Date</th>
                 <th>Lecture</th>
-                <th>Students</th>
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>25/02</td>
-                <td>Intermediate</td>
-                <td>30</td>
-                <td>
-                  <button class="btn btn-outline-info check-lecture">
-                    <i class="fa fa-check"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>25/02</td>
-                <td>Intermediate</td>
-                <td>30</td>
-                <td>
-                  <button class="btn btn-outline-info check-lecture">
-                    <i class="fa fa-check"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>25/02</td>
-                <td>Intermediate</td>
-                <td>30</td>
-                <td>
-                  <button
-                    class="btn btn-outline-info check-lecture"
-                    data-id="wow2"
-                  >
-                    <i class="fa fa-check"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="lectures"></tbody>
           </table>
         </div>
       </div>
@@ -83,7 +48,18 @@
   </div>
 </div>
 {% endblock %} {%block scripts %}
-<script src="/static/js/students-review.js"></script>
+<script type="text/template" id="lecture-template">
+  <tr>
+    <td>[[date_str]]</td>
+    <td>[[lecture_name]]</td>
+    <td>
+      <button class="btn btn-outline-info check-lecture" onclick="openModalLectureReview([[id]])">
+        <i class="fa fa-check"></i>
+      </button>
+    </td>
+  </tr>
+</script>
+<script src="/static/app/views/admin/students-review.js"></script>
 {% endblock %} {%block modals %}
 
 <div id="modalLectureReview" class="modal fade">
@@ -98,22 +74,16 @@
       <div class="modal-body">
         <div class="card text-center">
           <div class="card-body">
-            <h4>Intermediate I</h4>
-            <h6 class="text-muted">21/04/1994</h6>
-            <h6 class="text-muted">
-              08:00 - 09:40
-            </h6>
+            <h4 class="lecture-name"></h4>
+            <h6 class="text-muted lecture-date"></h6>
+            <h6 class="text-muted lecture-time"></h6>
           </div>
         </div>
         <div class="text-center mb-5">
           <div class="card">
             <div class="card-body">
-              <img
-                class="round student-img"
-                src="/static/assets/images/users/1.jpg"
-                alt=""
-              />
-              <h5 class="student-name mt-3">Lucas Meira Leite</h5>
+              <img class="round student-photo" src="" alt="" />
+              <h5 class="student-name mt-3"></h5>
             </div>
           </div>
         </div>
@@ -121,7 +91,7 @@
           <div class="row">
             <div class="col-6">
               <button
-                onclick="next1()"
+                onclick="next1(false)"
                 class="btn btn-danger btn-waves pt-4 pr-4 pl-4"
               >
                 <i class="fa fa-times fa-2x"></i>
@@ -130,7 +100,7 @@
             </div>
             <div class="col-6 text-info">
               <button
-                onclick="next1()"
+                onclick="next1(true)"
                 class="btn btn-info btn-waves pt-4 pr-4 pl-4"
               >
                 <i class="fa fa-check fa-2x"></i>

@@ -1,4 +1,6 @@
-from app.scripts.clone_lectures import clone_lectures
+from app.jobs.lectureHistory import generate_lecture_history
+from app.scripts.create_mocks import create_students
 
-clone_lectures()
+create_students()
+generate_lecture_history()
 print "Im done!"

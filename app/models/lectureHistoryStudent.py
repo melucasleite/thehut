@@ -21,3 +21,13 @@ class LectureHistoryStudent(db.Model):
         self.date = date
         self.lecture_id = lecture_id
         self.created_at = datetime.now()
+        self.present = None
+        self.deleted = False
+
+    def to_dict_full(self):
+        return {
+            "date": self.date.isoformat(),
+            "lecture": self.lecture.to_dict(),
+            "student": self.student.to_dict(),
+            "present": self.present
+        }
