@@ -6,4 +6,7 @@ $(document).ready(function() {
   $(".user-cellphone").html(AppState.user.cellphone);
   $(".user-cellphone").val(AppState.user.cellphone);
   $(".user-photo").attr("src", AppState.user.photo);
+  AppState.pending_review > 0
+    ? $(".pending-review").html("{0}".format(AppState.pending_review))
+    : null;
 });

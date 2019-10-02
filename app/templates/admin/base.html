@@ -203,9 +203,9 @@
                               There are students pending reviews
                             </span>
                           </div>
-                          <div class="btn btn-danger btn-circle ml-3">
-                            30
-                          </div>
+                          <div
+                            class="btn btn-danger btn-circle ml-3 pending-review"
+                          ></div>
                         </a>
                       </div>
                     </li>
@@ -289,6 +289,14 @@
                 </a>
               </li>
               <li>
+                <a class="waves-effect waves-dark" href="/students/review">
+                  <i class="far fa-star"></i>
+                  <span class="hide-menu"
+                    >Review Students <span class="text-danger pending-review"></span>
+                  </span>
+                </a>
+              </li>
+              <li>
                 <a class="waves-effect waves-dark" href="/finances">
                   <i class="fas fa-wallet"></i>
                   <span class="hide-menu">Finances</span>
@@ -308,9 +316,7 @@
                   <li><a href="/settings/lectures">Lectures</a></li>
                   <li><a href="/settings/level">Level</a></li>
                   <li>
-                    <a href="/settings/skills_and_remarks"
-                      >Skills & Remarks
-                    </a>
+                    <a href="/settings/skills_and_remarks">Skills & Remarks </a>
                   </li>
                   <li>
                     <a href="/settings/teachers">Teachers</a>
@@ -365,7 +371,7 @@
     <script src="/static/app/api.js"></script>
     <script src="/static/app/login.js"></script>
     <script src="/static/app/ui.js"></script>
-    <script src="/static/app/views/admin/base.js"></script>
+    <script src="/static/app/views/admin/base.js?v2"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>
