@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 import logging
 logging.basicConfig()
-logging.getLogger('apscheduler').setLevel(logging.INFO)
+logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 app.config.from_object('config')
