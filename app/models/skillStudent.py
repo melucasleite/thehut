@@ -23,3 +23,10 @@ class SkillStudent(db.Model):
         self.grade = grade
         self.created_at = datetime.now()
         self.deleted = False
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "grade": self.grade,
+            "name": self.skill.name
+        }

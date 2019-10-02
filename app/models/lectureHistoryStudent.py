@@ -29,12 +29,14 @@ class LectureHistoryStudent(db.Model):
         self.present = None
         self.deleted = False
 
-    def to_dict_full(self):
+    def to_dict_full(self, student=True, lecture=True, skills=True, remarks=True):
         return {
             "date": self.date.isoformat(),
             "message": self.message,
-            "lecture": self.lecture.to_dict(),
-            "student": self.student.to_dict(),
+            "lecture": self.lecture.to_dict() if lecture else self.lecture_id,
+            "student": self.student.to_dict() if student else self.student_id,
+            "skills": map(lambda x: x.to_dict(), self.skills) if skills else None,
+            "remarks": map(lambda x: x.to_dict(), self.remarks) if remarks else None,
             "present": self.present,
             "id": self.id
         }

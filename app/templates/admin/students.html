@@ -255,62 +255,21 @@
                 <div class="card-body">
                   <div class="table-responsive m-t-20">
                     <table
+                      id="history-table"
                       class="table stylish-table table-bordered table-striped"
                     >
                       <thead>
                         <td>Date</td>
                         <td>Lecture</td>
                         <td>Presence</td>
-                        <td>Skillset</td>
-                        <td>To Improve</td>
-                        <td>Strenghts</td>
+                        <td>Skills</td>
+                        <td>Remarks</td>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>20/05/2019</td>
-                          <td>Advanced #1 - Monday 5AM</td>
-                          <td>Yes</td>
-                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
-                          <td>Vocabulary</td>
-                          <td>Confidence</td>
-                        </tr>
-                        <tr>
-                          <td>20/05/2019</td>
-                          <td>Advanced #1 - Monday 5AM</td>
-                          <td>Yes</td>
-                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
-                          <td>Vocabulary</td>
-                          <td>Confidence</td>
-                        </tr>
-                        <tr>
-                          <td>20/05/2019</td>
-                          <td>Advanced #1 - Monday 5AM</td>
-                          <td>Yes</td>
-                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
-                          <td>Vocabulary</td>
-                          <td>Confidence</td>
-                        </tr>
-                        <tr>
-                          <td>20/05/2019</td>
-                          <td>Advanced #1 - Monday 5AM</td>
-                          <td>Yes</td>
-                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
-                          <td>Vocabulary</td>
-                          <td>Confidence</td>
-                        </tr>
-                        <tr>
-                          <td>20/05/2019</td>
-                          <td>Advanced #1 - Monday 5AM</td>
-                          <td>Yes</td>
-                          <td>SP: 5, GR: 5, VO: 5, LST:5, RW: 3, WR: 5</td>
-                          <td>Vocabulary</td>
-                          <td>Confidence</td>
-                        </tr>
-                      </tbody>
+                      <tbody id="history"></tbody>
                     </table>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-info">Add Lecture History</button>
+                    <div id="no-history">
+                      <p>This student has no history.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -414,6 +373,15 @@
   </div>
 </div>
 {% endblock %} {% block scripts %}
+<script type="text/template" id="history-template">
+  <tr>
+    <td>[[date]]</td>
+    <td>[[name]]</td>
+    <td>[[present]]</td>
+    <td>[[skills]]</td>
+    <td>[[remarks]]</td>
+  </tr>
+</script>
 <script type="text/template" id="lecture_template">
   <button onclick="deleteLecture([[lecture_id]])" class="btn btn-outline-[[accent_color]] mr-2">[[name]]<br>[[day_of_week]]<br>[[timestamp]]</button>
 </script>

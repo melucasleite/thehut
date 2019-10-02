@@ -22,3 +22,10 @@ class RemarkStudent(db.Model):
         self.positive = positive
         self.created_at = datetime.now()
         self.deleted = False
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "positive": self.positive,
+            "name": self.remark.name
+        }

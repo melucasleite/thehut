@@ -4,13 +4,13 @@ from flask_login import login_required, current_user
 from app import app, db
 import json
 from app.utils import json_serial
-from app.models import Lecture, LectureHistoryStudent, SkillStudent, RemarkStudent
+from app.models import Lecture, LectureHistoryStudent, SkillStudent, RemarkStudent, Student
 from datetime import datetime
 
 
 @app.route('/api/student/review', methods=["POST"])
 @login_required
-def api_student_review():
+def api_student_review_post():
     args = request.form
     present = args["present"] == "true"
     comment = args["comment"]
@@ -41,3 +41,16 @@ def api_student_review():
         ))
     db.session.commit()
     return jsonify({"message": "Lecture History updated."}), 200
+
+
+@app.route('/api/student/review', methods=["GET"])
+@login_required
+def api_student_review_get():
+    args = request.args
+    student_id = args["student_id"]
+    student = Student.query.get(student_id)
+    if not student:
+        raise Exception("Student not found.")
+    history = student.lecture_history.all()
+    response = map(lambda x: x.to_dict_full(), history)
+    return jsonify({"history": response}), 200
