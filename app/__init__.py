@@ -4,11 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import login_required
 from apscheduler.schedulers.background import BackgroundScheduler
-scheduler = BackgroundScheduler()
-scheduler.start()
-
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 import logging
 logging.basicConfig()
+logging.getLogger('apscheduler').setLevel(logging.INFO)
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -19,6 +18,12 @@ from app.models import *
 from app.api import *
 from app.views import *
 from app.utils import error_handlers
+from app.jobs.lectureHistory import generate_lecture_history
+
+scheduler = BackgroundScheduler(
+    jobstores={'default': SQLAlchemyJobStore(url='sqlite:///jobs.sqlite')})
+scheduler.start()
+scheduler.add_job(generate_lecture_history, id="generate_lecture_history", replace_existing=True, trigger="interval", minutes=5)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -21,16 +21,9 @@
 <!-- Row -->
 <div class="row">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card" id="review-card" style="display: None">
       <div class="card-body">
         <h4 class="card-title">Classes Pending Review</h4>
-        <div class="form-group">
-          <input
-            type="text"
-            placeholder="Search..."
-            class="form-control select2"
-          />
-        </div>
         <div class="table-responsive m-t-20">
           <table class="table stylish-table table-striped">
             <thead>
@@ -43,6 +36,13 @@
             <tbody id="lectures"></tbody>
           </table>
         </div>
+      </div>
+    </div>
+    <div class="card" id="no-review-card" style="display: None">
+      <div class="card-body">
+        <p>
+          No students pending review.
+        </p>
       </div>
     </div>
   </div>
@@ -58,6 +58,39 @@
       </button>
     </td>
   </tr>
+</script>
+<script type="text/template" id="skill-template">
+  <div class="skill-review">
+      <p>[[name]]</p>
+      <i data-value="1" data-skillid="[[id]]" class="far fa-star fa-lg skill-star" onclick="skillClick(this)"></i>
+      <i data-value="2" data-skillid="[[id]]" class="far fa-star fa-lg skill-star" onclick="skillClick(this)"></i>
+      <i data-value="3" data-skillid="[[id]]" class="far fa-star fa-lg skill-star" onclick="skillClick(this)"></i>
+      <i data-value="4" data-skillid="[[id]]" class="far fa-star fa-lg skill-star" onclick="skillClick(this)"></i>
+      <i data-value="5" data-skillid="[[id]]" class="far fa-star fa-lg skill-star" onclick="skillClick(this)"></i>
+    </div>
+</script>
+<script type="text/template" id="remark-template">
+  <tr>
+      <td>
+        <input
+          data-id="[[id]]"
+          type="checkbox"
+          id="md_checkbox_[[id]]"
+          class="chk-col-red filled-in to-improve"
+        />
+        <label for="md_checkbox_[[id]]"></label>
+      </td>
+      <td>[[name]]</td>
+      <td>
+        <input
+          data-id="[[id]]"
+          type="checkbox"
+          id="md_checkbox_[[id]]_2"
+          class="chk-col-blue filled-in strenght"
+        />
+        <label for="md_checkbox_[[id]]_2"></label>
+      </td>
+    </tr>
 </script>
 <script src="/static/app/views/admin/students-review.js"></script>
 {% endblock %} {%block modals %}
@@ -110,54 +143,7 @@
           </div>
         </div>
         <div class="text-center" id="step2" style="display: none">
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
-          <div class="skill-review">
-            <p>Speaking</p>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-            <i class="far fa-star fa-lg"></i>
-          </div>
+          <div id="skills"></div>
           <button class="btn btn-info mt-5" onclick="next2()">Next</button>
         </div>
         <div class="text-center" id="step3" style="display: none">
@@ -170,147 +156,18 @@
                 <td class="text-success">Strenght</td>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_1"
-                    class="chk-col-red filled-in "
-                  />
-                  <label for="md_checkbox_1"></label>
-                </td>
-                <td>Acurracy</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    id="md_checkbox_2"
-                    class="chk-col-blue filled-in "
-                  />
-                  <label for="md_checkbox_2"></label>
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="remarks"></tbody>
           </table>
           <button class="btn btn-info mt-5" onclick="next3()">Next</button>
         </div>
         <div id="step4" style="display: None">
           <label>Tutor's comment</label>
-          <textarea class="form-control" cols="30" rows="10"></textarea>
+          <textarea
+            id="comment"
+            class="form-control"
+            cols="30"
+            rows="10"
+          ></textarea>
           <button class="btn btn-info mt-5" onclick="next4()">Next</button>
         </div>
       </div>

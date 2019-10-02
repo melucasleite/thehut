@@ -4,7 +4,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from sqlalchemy.dialects.mysql import JSON
 
-from app import db, app
+from app import db
 
 
 class User(UserMixin, db.Model):
@@ -19,6 +19,9 @@ class User(UserMixin, db.Model):
     deleted = db.Column(db.Boolean, default=False)
     blocked = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime)
+    # relationships
+    lecture_history = db.relationship(
+        'LectureHistoryStudent', backref='user', lazy='dynamic')
 
     def __init__(self, name, email, password, cellphone, photo, roles):
         self.name = name
