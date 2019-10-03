@@ -99,7 +99,7 @@
     <![endif]-->
     <style>
       .page-wrapper {
-        margin-left: 0px;
+        margin-left: 0px !important;
       }
     </style>
   </head>
@@ -285,10 +285,8 @@
                 </div>
               </div>
 
-              <div>
-                <table
-                  class="table table-responsive table-bordered table-striped"
-                >
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped">
                   <thead class="text-center">
                     <td></td>
                     <td>Segunda</td>
@@ -406,7 +404,7 @@
       </a>
     </div>
     <script type="text/template" id="template_lecture">
-      <td class="lecture-td" data-id="[[id]]" onclick="lectureOnClick(this)">
+      <td class="[[class]]" data-id="[[id]]" onclick="lectureOnClick(this)">
         <span class="badge badge-outline-[[accent_color]] label-md"
           >[[name]]
         </span>
@@ -457,6 +455,6 @@
     <script src="/static/assets/plugins/polyfill/promise-polyfill.js"></script>
     <script src="/static/app/api.js"></script>
     <script src="/static/app/ui.js"></script>
-    <script src="/static/app/views/student-signin.js?v2"></script>
+    <script src="/static/app/views/student-signin.js?v3"></script>
   </body>
 </html>

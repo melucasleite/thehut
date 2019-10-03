@@ -115,6 +115,7 @@ function groupLectures(lectures) {
 }
 
 function lectureOnClick(id) {
+  if (!id) return;
   loadLecture(id, function() {
     lecture.timestamp =
       moment(lecture.start).format("HH:mm") +

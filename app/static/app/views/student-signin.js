@@ -338,6 +338,7 @@ function renderLectures(lectures) {
         return lecture.day_of_week == weekDay;
       });
       if (foundLecture !== undefined) {
+        foundLecture.class = "lecture-td"
         $lectureTemplate.render(foundLecture).appendTo("#ts" + group.id);
       } else {
         $lectureTemplate.render(emptyLecture).appendTo("#ts" + group.id);
