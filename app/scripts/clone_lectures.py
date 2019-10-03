@@ -5,8 +5,8 @@ from app.models import Lecture
 def clone_lectures():
     all_lectures = Lecture.query.all()
     week_days = [
-        #"Monday",
-        "Thuesday",
+        "Monday",
+        "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",

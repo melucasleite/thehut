@@ -63,7 +63,7 @@ function renderLectures(lectures) {
     $rowTemplate.render(group).appendTo("#lectures");
     var weekDays = [
       "Monday",
-      "Thuesday",
+      "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
