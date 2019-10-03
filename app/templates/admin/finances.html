@@ -129,8 +129,7 @@
               <td>Amount</td>
               <td>Payment</td>
             </thead>
-            <tbody id="payments">
-            </tbody>
+            <tbody id="payments"></tbody>
           </table>
         </div>
       </div>
@@ -150,61 +149,61 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-lg-6">
-            <h5>Lucas Leite</h5>
+            <h5 class="student-name"></h5>
             <h6 class="text-muted">
-              <i class="fa fa-phone"></i> 71 99126-2602
+              <i class="fa fa-phone"></i> <span class="student-phone"></span>
             </h6>
             <h6 class="text-muted">
-              <i class="fa fa-envelope"></i> me@lucasleite.us
-            </h6>
-            <h6 class="text-muted">
-              <a href="/students" target="_blank">Student Profile</a>
+              <i class="fa fa-envelope"></i> <span class="student-email"></span>
             </h6>
           </div>
           <div class="col-lg-6">
-            <h6>Started at: <span class="text-muted">April, 5th</span></h6>
-            <h6>Monthly Payment: <span class="text-muted">R$ 760</span></h6>
-            <h6>Classes per Week: <span class="text-muted">5</span></h6>
-            <h6>Payment Date: <span class="text-muted">12</span></h6>
+            <h6>
+              Started at: <span class="text-muted student-started-at"></span>
+            </h6>
+            <h6>
+              Monthly Payment:
+              <span class="text-muted student-monthly-payment"></span>
+            </h6>
+            <h6>
+              Classes per Week:
+              <span class="text-muted student-lectures-per-week"></span>
+            </h6>
+            <h6>
+              Payment Date:
+              <span class="text-muted student-payment-date"></span>
+            </h6>
           </div>
         </div>
       </div>
       <div class="modal-body">
         <!-- Amount Paid -->
-        <div class="form-group has-danger">
-          <label for="exampleInputuname">Amount Paid</label>
-          <input
-            value="0"
-            type="number"
-            class="form-control"
-            id="exampleInputuname"
-          />
-          <small class="form-control-feedback">
-            Mandatory field.
-          </small>
-        </div>
-
-        <!-- Payment Method -->
-        <div class="form-group has-danger">
-          <label for="exampleInputuname">Payment Method</label>
-          <select class="form-control" name="" id="">
-            <option value="" selected disabled>Select a option</option>
-            <option value="">Cash</option>
-            <option value="">Credit Card</option>
-          </select>
-          <small class="form-control-feedback">
-            Mandatory field.
-          </small>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-info waves-effect"
-          data-dismiss="modal"
-        >
-          Add Payment
-        </button>
+        <form onsubmit="addPayment(this, event)">
+          <input type="hidden" class="payment-id" name="id" />
+          <div class="form-group">
+            <label>Amount Paid</label>
+            <input
+              value="0"
+              type="number"
+              name="amount_paid"
+              step="0.01"
+              min="0"
+              class="form-control"
+            />
+          </div>
+          <!-- Payment Method -->
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select class="form-control" name="payment_method">
+              <option value="" selected disabled>Select a option</option>
+              <option value="cash">Cash</option>
+              <option value="credit_card">Credit Card</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-info waves-effect">
+            Add Payment
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -218,50 +217,62 @@
           ×
         </button>
       </div>
+
       <div class="modal-body">
         <div class="row">
           <div class="col-lg-6">
-            <h5>Lucas Leite</h5>
+            <h5 class="student-name"></h5>
             <h6 class="text-muted">
-              <i class="fa fa-phone"></i> 71 99126-2602
+              <i class="fa fa-phone"></i> <span class="student-phone"></span>
             </h6>
             <h6 class="text-muted">
-              <i class="fa fa-envelope"></i> me@lucasleite.us
-            </h6>
-            <h6 class="text-muted">
-              <a href="/students" target="_blank">Student Profile</a>
+              <i class="fa fa-envelope"></i> <span class="student-email"></span>
             </h6>
           </div>
           <div class="col-lg-6">
-            <h6>Started at: <span class="text-muted">April, 5th</span></h6>
-            <h6>Monthly Payment: <span class="text-muted">R$ 760</span></h6>
-            <h6>Classes per Week: <span class="text-muted">5</span></h6>
-            <h6>Payment Date: <span class="text-muted">12</span></h6>
+            <h6>
+              Started at: <span class="text-muted student-started-at"></span>
+            </h6>
+            <h6>
+              Monthly Payment:
+              <span class="text-muted student-monthly-payment"></span>
+            </h6>
+            <h6>
+              Classes per Week:
+              <span class="text-muted student-lectures-per-week"></span>
+            </h6>
+            <h6>
+              Payment Date:
+              <span class="text-muted student-payment-date"></span>
+            </h6>
           </div>
         </div>
       </div>
       <div class="modal-body">
         <h6>
-          Received <b class="text-danger">R$ 500</b> at
-          <b class="text-info">05/04/2014</b> by
-          <b class="text-warning">Cash.</b>
+          Received <b class="text-danger payment-amount"></b> at
+          <b class="text-info payment-date"></b> by
+          <b
+            class="text-warning payment-method"
+            style="text-transform: capitalize;"
+          >
+          </b>
         </h6>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-danger waves-effect"
-          data-dismiss="modal"
-        >
-          Cancel Payment
-        </button>
+        <form onsubmit="cancelPayment(this, event)">
+          <input type="hidden" class="payment-id" name="id" />
+          <button type="submit" class="btn btn-danger waves-effect">
+            Cancel Payment
+          </button>
+        </form>
       </div>
     </div>
   </div>
 </div>
 {% endblock %} {% block scripts %}
 <script type="text/template" id="payment-template">
-  <tr class="student-[[status]]">
+  <tr class="student-[[status]]" data-id="[[id]]">
       <td>
           <span class="round bg-inverse"
             ><img
@@ -279,13 +290,12 @@
       </td>
       <td>R$ [[amount]]</td>
       <td>
-        <span class="label label-danger">[[status]]</span>
+        <span class="label label-[[accent]]">[[status]]</span>
       </td>
     </tr>
 </script>
 <script src="/static/app/views/admin/finances.js"></script>
 <script>
-
   $(".clockpicker")
     .clockpicker({
       donetext: "Done"

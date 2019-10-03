@@ -13,7 +13,7 @@ class Student(db.Model):
     # billing
     classes_per_week = db.Column(db.Integer)
     weeks = db.Column(db.Integer)
-    monthly_payment = db.Column(db.DECIMAL(10,2))
+    monthly_payment = db.Column(db.DECIMAL(10, 2))
     message = db.Column(db.String(6000))
     # management
     deleted = db.Column(db.Boolean, default=False)
@@ -43,6 +43,7 @@ class Student(db.Model):
         self.message = ""
         self.deleted = False
         self.created_at = datetime.now()
+        self.payment_date = datetime.now()
 
     def to_dict(self):
         return {
@@ -57,6 +58,7 @@ class Student(db.Model):
             "monthly_payment": float(self.monthly_payment),
             "message": self.message,
             "created_at": self.created_at.isoformat(),
+            "payment_date": self.payment_date.isoformat(),
         }
 
     def to_dict_full(self):
