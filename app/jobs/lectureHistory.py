@@ -21,9 +21,9 @@ def generate_lecture_history():
         # Generate lectureHistoryStudent for each student
         db.session.flush()
         now = datetime.now()
-        now_time = now.replace(year=1900, month=1, day=1, hour=18)
+        now_time = now.replace(year=1900, month=1, day=1)
         now_date = now.replace(hour=0, minute=0, second=0, microsecond=0)
-        weekday = weekdays[now.weekday()-1]
+        weekday = weekdays[now.weekday()]
         lectures = db.session.query(Lecture) \
             .filter(now_time >= Lecture.end) \
             .filter(Lecture.day_of_week == weekday) \
