@@ -129,92 +129,7 @@
               <td>Amount</td>
               <td>Payment</td>
             </thead>
-            <tbody>
-              <tr class="student">
-                <td style="width:50px;">
-                  <span class="round bg-inverse">LL</span>
-                </td>
-                <td>
-                  <h6>Lucas Leite</h6>
-                  <small class="text-muted">3 classes, 4 weeks</small>
-                </td>
-                <td>05/01/2019</td>
-                <td>70% (23/30)</td>
-                <td>R$ 120</td>
-                <td>
-                  <span class="label label-danger">Pending</span>
-                </td>
-              </tr>
-              <tr class="student">
-                <td style="width:50px;">
-                  <span class="round bg-inverse">MA</span>
-                </td>
-                <td>
-                  <h6>Marcos Araujo</h6>
-                  <small class="text-muted">3 classes, 4 weeks</small>
-                </td>
-                <td>05/01/2019</td>
-                <td>70% (23/30)</td>
-                <td>R$ 120</td>
-                <td>
-                  <span class="label label-danger">Pending</span>
-                </td>
-              </tr>
-              <tr class="student">
-                <td style="width:50px;">
-                  <span class="round bg-inverse">PO</span>
-                </td>
-                <td>
-                  <h6>Paulo Octavio</h6>
-                  <small class="text-muted">3 classes, 4 weeks</small>
-                </td>
-                <td>05/01/2019</td>
-                <td>70% (23/30)</td>
-                <td>R$ 120</td>
-                <td>
-                  <span class="label label-danger">Pending</span>
-                </td>
-              </tr>
-              <tr class="student">
-                <td>
-                  <span class="round"
-                    ><img
-                      src="/static/assets/images/users/2.jpg"
-                      alt="user"
-                      width="50"
-                  /></span>
-                </td>
-                <td>
-                  <h6>Alice</h6>
-                  <small class="text-muted">3 classes, 12 weeks</small>
-                </td>
-                <td>05/01/2019</td>
-                <td>70% (23/30)</td>
-                <td>R$ 120</td>
-                <td>
-                  <span class="label label-danger">Pending</span>
-                </td>
-              </tr>
-              <tr class="student-paid">
-                <td>
-                  <span class="round"
-                    ><img
-                      src="/static/assets/images/users/3.jpg"
-                      alt="user"
-                      width="50"
-                  /></span>
-                </td>
-                <td>
-                  <h6>Andrew</h6>
-                  <small class="text-muted">3 classes, 7 weeks</small>
-                </td>
-                <td>05/01/2019</td>
-                <td>70% (23/30)</td>
-                <td>R$ 120</td>
-                <td>
-                  <span class="label label-info">Paid</span>
-                </td>
-              </tr>
+            <tbody id="payments">
             </tbody>
           </table>
         </div>
@@ -345,14 +260,32 @@
   </div>
 </div>
 {% endblock %} {% block scripts %}
-
+<script type="text/template" id="payment-template">
+  <tr class="student-[[status]]">
+      <td>
+          <span class="round bg-inverse"
+            ><img
+              src="[[photo]]"
+              alt=""
+              width="50"
+          /></span>
+        </td>
+      <td>
+        <h6>[[name]]</h6>
+        <small class="text-muted">[[classes_per_week]] lectures, [[weeks]] weeks</small>
+      </td>
+      <td>[[due_date]]</td>
+      <td>[[frequency_percent]]% ([[frequency_absolut]]/)
+      </td>
+      <td>R$ [[amount]]</td>
+      <td>
+        <span class="label label-danger">[[status]]</span>
+      </td>
+    </tr>
+</script>
+<script src="/static/app/views/admin/finances.js"></script>
 <script>
-  $(".student").on("click", function() {
-    $("#modalPay").modal("toggle");
-  });
-  $(".student-paid").on("click", function() {
-    $("#modalPaid").modal("toggle");
-  });
+
   $(".clockpicker")
     .clockpicker({
       donetext: "Done"

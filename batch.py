@@ -1,6 +1,4 @@
-from app.jobs.lectureHistory import generate_lecture_history
-from app.scripts.create_mocks import create_students
+from app.jobs.studentPayment import generate_payments
 
-create_students()
-generate_lecture_history()
+generate_payments()
 print "Im done!"

@@ -19,11 +19,13 @@ from app.api import *
 from app.views import *
 from app.utils import error_handlers
 from app.jobs.lectureHistory import generate_lecture_history
+from app.jobs.studentPayment import generate_payments
 
 scheduler = BackgroundScheduler(
     jobstores={'default': SQLAlchemyJobStore(url='sqlite:///jobs.sqlite')})
 scheduler.start()
 scheduler.add_job(generate_lecture_history, id="generate_lecture_history", replace_existing=True, trigger="interval", minutes=5)
+scheduler.add_job(generate_payments, id="generate_payments", replace_existing=True, trigger="interval", minutes=1)
 
 if __name__ == "__main__":
     app.run(debug=True)

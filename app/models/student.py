@@ -18,6 +18,7 @@ class Student(db.Model):
     # management
     deleted = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime)
+    payment_date = db.Column(db.DateTime)
     # relationships
     level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     lectures = db.relationship(
