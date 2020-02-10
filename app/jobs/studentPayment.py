@@ -23,5 +23,5 @@ def generate_payments():
                 StudentPaymentHistory(student.id, due_date, amount))
             count += 1
             db.session.commit()
-        print "Created {} StudentPaymentHistory.".format(count)
+        print("Created {} StudentPaymentHistory.".format(count))
         return count

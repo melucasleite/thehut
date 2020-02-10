@@ -42,5 +42,5 @@ def generate_lecture_history():
                     student.id, now_date, lecture.id))
                 count += 1
                 db.session.commit()
-        print "Created {} LectureHistoryStudent.".format(count)
+        print("Created {} LectureHistoryStudent.".format(count))
         return count
