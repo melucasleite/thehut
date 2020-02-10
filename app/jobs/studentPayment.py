@@ -1,4 +1,5 @@
 from app.models import StudentPaymentHistory, Student
+from calendar import monthrange
 from app import db, app
 from datetime import datetime
 from sqlalchemy import extract
@@ -17,10 +18,13 @@ def generate_payments():
                 .first()
             if payment_exists:
                 continue
-            due_date = now.replace(day=student.payment_date.day)
+            last_day_of_month = monthrange(now.year, now.month)[1]
+            if student.payment_date.day <= last_day_of_month:
+                due_date = now.replace(day=student.payment_date.day)
+            else:
+                due_date = now.replace(day=last_day_of_month)
             amount = student.monthly_payment
-            db.session.add(
-                StudentPaymentHistory(student.id, due_date, amount))
+            db.session.add(StudentPaymentHistory(student.id, due_date, amount))
             count += 1
             db.session.commit()
         print("Created {} StudentPaymentHistory.".format(count))
