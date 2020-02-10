@@ -70,10 +70,13 @@ def api_student_update():
     message = args["message"].strip()
     cellphone = ''.join(filter(lambda x: x.isdigit(), cellphone))
     student = Student.query.get(id)
-    if not student:
-        raise Exception("Student not found.")
-    if not(name and email):
-        raise Exception("Missing fields.")
+    try:
+        if not student:
+            raise Exception("Student not found.")
+        if not(name and email):
+            raise Exception("E-mail and name are mandatory.")
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
     student.name = name
     student.email = email
     student.cellphone = cellphone
