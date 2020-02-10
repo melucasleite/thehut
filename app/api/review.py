@@ -21,7 +21,6 @@ def api_student_review_post():
     lecture_history_student.user_id = current_user.id
     skills = json.loads(args["skills"])
     for skill in skills:
-        print skill
         db.session.add(SkillStudent(
             lecture_history_student.student_id,
             lecture_history_student.lecture_id,
@@ -31,7 +30,6 @@ def api_student_review_post():
         ))
     remarks = json.loads(args["remarks"])
     for remark in remarks:
-        print remark
         db.session.add(RemarkStudent(
             lecture_history_student.student_id,
             lecture_history_student.lecture_id,
@@ -52,5 +50,5 @@ def api_student_review_get():
     if not student:
         raise Exception("Student not found.")
     history = student.lecture_history.all()
-    response = map(lambda x: x.to_dict_full(), history)
+    response = [x.to_dict_full() for x in history]
     return jsonify({"history": response}), 200

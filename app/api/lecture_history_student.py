@@ -14,6 +14,6 @@ def api_lecture_history_student_get():
     lectures_history_student = db.session.query(LectureHistoryStudent) \
         .filter(LectureHistoryStudent.present == None) \
         .all()
-    lectures_history_student = map(lambda x: x.to_dict_full(), lectures_history_student)
+    lectures_history_student = [x.to_dict_full() for x in lectures_history_student]
     response = {"lectures_history_student": lectures_history_student}
     return jsonify(response)

@@ -12,7 +12,7 @@ from datetime import datetime
 @login_required
 def api_remark_get():
     remarks = Remark.query.filter_by(deleted=False).all()
-    remarks = map(lambda x: x.to_dict(), remarks)
+    remarks = [x.to_dict() for x in remarks]
     response = {"remarks": remarks}
     return jsonify(response)
 

@@ -35,8 +35,8 @@ class LectureHistoryStudent(db.Model):
             "message": self.message,
             "lecture": self.lecture.to_dict() if lecture else self.lecture_id,
             "student": self.student.to_dict() if student else self.student_id,
-            "skills": map(lambda x: x.to_dict(), self.skills) if skills else None,
-            "remarks": map(lambda x: x.to_dict(), self.remarks) if remarks else None,
+            "skills": [x.to_dict() for x in self.skills] if skills else None,
+            "remarks": [x.to_dict() for x in self.remarks] if remarks else None,
             "present": self.present,
             "id": self.id
         }

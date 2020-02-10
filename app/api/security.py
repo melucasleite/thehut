@@ -11,10 +11,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app import app, db, User
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
-
-
 ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
 
 
@@ -109,7 +105,6 @@ def api_user_password_recover():
 
 @app.route('/api/security/logout')
 def logout():
-    print "fired"
     for key in ['identity.id', 'identity.auth_type']:
         session.pop(key, None)
     logout_user()

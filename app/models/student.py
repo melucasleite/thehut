@@ -74,5 +74,5 @@ class Student(db.Model):
             "monthly_payment": float(self.monthly_payment),
             "message": self.message,
             "created_at": self.created_at.isoformat(),
-            "lectures": map(lambda x: x.to_dict(), self.lectures)
+            "lectures": [x.to_dict() for x in self.lectures]
         }
