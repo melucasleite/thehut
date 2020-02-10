@@ -13,7 +13,7 @@ from datetime import datetime
 def api_student_payment_history():
     student_payment_history = db.session.query(StudentPaymentHistory) \
         .all()
-    student_payment_history = map(lambda x: x.to_dict(student=True), student_payment_history)
+    student_payment_history = [x.to_dict(student=True) for x in student_payment_history]
     response = {"student_payment_history": student_payment_history}
     return jsonify(response)
 

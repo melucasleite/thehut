@@ -12,7 +12,7 @@ from datetime import datetime
 @login_required
 def api_level_get():
     levels = Level.query.filter_by(deleted=False).all()
-    levels = map(lambda x: x.to_dict(), levels)
+    levels = [x.to_dict() for x in levels]
     response = {"levels": levels}
     return jsonify(response)
 

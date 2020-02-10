@@ -18,7 +18,7 @@ def api_lecture_get():
             raise Exception("Lecture not found.")
         return jsonify({"lecture": lecture.to_dict_full()})
     lectures = Lecture.query.filter_by(deleted=False).all()
-    lectures = map(lambda x: x.to_dict(), lectures)
+    lectures = [x.to_dict() for x in lectures]
     response = {"lectures": lectures}
     return jsonify(response)
 

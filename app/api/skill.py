@@ -12,7 +12,7 @@ from datetime import datetime
 @login_required
 def api_skill_get():
     skills = Skill.query.filter_by(deleted=False).all()
-    skills = map(lambda x: x.to_dict(), skills)
+    skills = [x.to_dict() for x in skills]
     response = {"skills": skills}
     return jsonify(response)
 

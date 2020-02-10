@@ -41,7 +41,7 @@ def api_student_post():
 @login_required
 def api_students_get():
     students = Student.query.all()
-    students = map(lambda x: x.to_dict(), students)
+    students = [x.to_dict() for x in students]
     response = {"students": students}
     return jsonify(response)
 
