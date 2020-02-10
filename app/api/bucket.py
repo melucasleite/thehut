@@ -13,7 +13,6 @@ def api_bucket_post():
     # check if the post request has the file part
     try:
         if 'file' not in request.files:
-            raise Exception("No file part.")
             return 'No file part', 500
         file = request.files['file']
         # if user does not select file, browser also
