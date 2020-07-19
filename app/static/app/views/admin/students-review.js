@@ -93,6 +93,27 @@ function openModalLectureReview(index) {
     $("#modalLectureReview").modal("show");
 }
 
+function openCancelLectureReview(index) {
+    selected_lecture = lectures[index];
+    defaultConfirm(function () {
+        console.log(selected_lecture);
+        $.ajax({
+            url: apiUrl + "student/review",
+            method: "DELETE",
+            data: {
+                'lecture_id': selected_lecture.id,
+                'lecture_date': selected_lecture.date,
+            },
+            beforeSend: preloaderShow,
+            complete: preloaderHide,
+            success: function (data) {
+                window.location = "/students/review";
+            },
+            error: errorHandler
+        });
+    })
+}
+
 function renderStudent() {
     $(".student-name").html(selected_student.name);
     $(".student-photo").attr("src", selected_student.photo);

@@ -52,3 +52,20 @@ def api_student_review_get():
     history = student.lecture_history.all()
     response = [x.to_dict_full() for x in history]
     return jsonify({"history": response}), 200
+
+
+@app.route('/api/student/review', methods=["DELETE"])
+@login_required
+def api_student_review_delete():
+    args = request.form
+    lecture_id = args["lecture_id"]
+    date = args["lecture_date"]
+    lecture_history_students = LectureHistoryStudent.query.filter(
+        LectureHistoryStudent.date == date,
+        LectureHistoryStudent.lecture_id == lecture_id
+    ).all()
+    print(lecture_history_students)
+    for lecture_history in lecture_history_students:
+        db.session.delete(lecture_history)
+    db.session.commit()
+    return jsonify({"message": "Lecture History deleted."}), 200
