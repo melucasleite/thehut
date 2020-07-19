@@ -68,22 +68,21 @@ function renderLectures(lecture_history_student) {
   $template = $("#lecture-template");
   $("#lectures").html("");
   lectures = groupLectures(lecture_history_student);
-  lectures.map(function(lecture) {
+  lectures.map(function(lecture, index) {
     lecture.lecture_name = "[{0}] [{1} - {2}] {3}".format(
       lecture.lecture.day_of_week,
       moment(lecture.lecture.start).format("HH:mm"),
       moment(lecture.lecture.end).format("HH:mm"),
       lecture.lecture.name
     );
+    lecture.index = index;
     lecture.date_str = moment(lecture.date).format("DD/MM");
   });
   $template.render(lectures).appendTo("#lectures");
 }
 
-function openModalLectureReview(id) {
-  selected_lecture = lectures.find(function(lecture) {
-    return lecture.id == id;
-  });
+function openModalLectureReview(index) {
+  selected_lecture = lectures[index];
   selected_students = selected_lecture.students;
   selected_student = selected_students[0];
   renderStudent();
